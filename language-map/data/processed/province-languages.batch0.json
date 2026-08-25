@@ -1,0 +1,119 @@
+{
+    "name": "province-languages",
+    "description": "Province-level linguistic data for Peta Bahasa",
+    "version": "0.1.0-batch0",
+    "generated": "2026-08-25",
+    "provinces": [
+        {
+            "province_name": "Maluku",
+            "province_code": "ID-MA",
+            "reported_language_count": 62,
+            "languages": [
+                "Alune",
+                "Ambalau",
+                "Balkewan",
+                "Banda",
+                "Barakai",
+                "Batuley",
+                "Bobar",
+                "Boing",
+                "Buru",
+                "Damar Timur",
+                "Dawelor",
+                "Dobel",
+                "Elnama",
+                "Emplawas",
+                "Fordata",
+                "Hitu",
+                "Hoti",
+                "Illiun",
+                "Kaham",
+                "Kaiely",
+                "Karey",
+                "Kei",
+                "Kola",
+                "Kompane",
+                "Kur",
+                "Leinam",
+                "Letti",
+                "Lola",
+                "Loon",
+                "Luhu",
+                "Makatian",
+                "Marlasi",
+                "Marsela Barat",
+                "Marsela Tengah",
+                "Marsela Timur",
+                "Masarete",
+                "Melayu",
+                "Moa",
+                "Naulu",
+                "Nila",
+                "Oirata",
+                "Oroyliye",
+                "Piliana",
+                "Piru",
+                "Salas",
+                "Saleman",
+                "Samasuru",
+                "Selaru",
+                "Seluwarsa",
+                "Seram",
+                "Serili",
+                "Serua",
+                "Tagalisa",
+                "Tarangan Barat",
+                "Tarangan Timur",
+                "Telaah Babar",
+                "Teon",
+                "Wemale",
+                "Woda-Woda",
+                "Yalahatan",
+                "Yamdena",
+                "Yatoke"
+            ],
+            "source": {
+                "institution": "Badan Pengembangan dan Pembinaan Bahasa, Kementerian Pendidikan Dasar dan Menengah",
+                "dataset": "Bahasa di Provinsi Maluku",
+                "url": "https://petabahasa.kemendikdasmen.go.id/provinsi.php?idp=Maluku",
+                "accessed": "2026-08-25"
+            }
+        },
+        {
+            "province_name": "Jawa Timur",
+            "province_code": "ID-JI",
+            "reported_language_count": 3,
+            "languages": [
+                "Bajo",
+                "Jawa",
+                "Madura"
+            ],
+            "source": {
+                "institution": "Badan Pengembangan dan Pembinaan Bahasa, Kementerian Pendidikan Dasar dan Menengah",
+                "dataset": "Bahasa di Provinsi Jawa Timur",
+                "url": "https://petabahasa.kemendikdasmen.go.id/provinsi.php?idp=Jawa+Timur",
+                "accessed": "2026-08-25"
+            }
+        },
+        {
+            "province_name": "Aceh",
+            "province_code": "ID-AC",
+            "reported_language_count": 7,
+            "languages": [
+                "Aceh",
+                "Batak",
+                "Devayan",
+                "Gayo",
+                "Jawa",
+                "Minangkabau",
+                "Sigulai"
+            ],
+            "source": {
+                "institution": "Badan Pengembangan dan Pembinaan Bahasa, Kementerian Pendidikan Dasar dan Menengah",
+                "dataset": "Bahasa di Provinsi Aceh",
+                "url": "https://petabahasa.kemendikdasmen.go.id/provinsi.php?idp=Aceh",
+                "accessed": "2026-08-25"
+            }
+        }
+    ]
+}

@@ -6,7 +6,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>BahasaBahasa | Building Indonesia's Language Infrastructure</title>
+    <title>"bahasabahasa" | Building Indonesia's Language Infrastructure</title>
+
+    <link rel="icon" type="image/png" href="assets/icon/bahasabahasa-favicon.png">
 
     <meta name="description"
         content="Building Indonesia's Language Infrastructure for Humans and AI.">
@@ -17,52 +19,55 @@
 
 <body>
 
+
     <!-- ========================================================= -->
     <!-- Header -->
     <!-- ========================================================= -->
 
-    <header>
+<header>
 
-        <nav class="container">
+    <nav class="container">
 
-            <a href="#" class="brand">
+        <a href="#" class="brand">
+            <img
+                src="assets/logo/logo-bahasabahasa.svg"
+                alt="BahasaBahasa Logo"
+            >
+        </a>
 
-                <!-- Builder insert logo -->
-
-                <img src="assets/logo/logo.svg"
-                    alt="BahasaBahasa Logo">
-
-                <!-- Builder insert wordmark -->
-
-                <span>BahasaBahasa</span>
-
-            </a>
+        <div
+            class="nav-menu"
+            id="primary-navigation"
+        >
 
             <ul>
-
                 <li><a href="#platform">Platform</a></li>
-
                 <li><a href="#products">Products</a></li>
-
                 <li><a href="#community">Community</a></li>
-
                 <li><a href="#research">Research</a></li>
-
                 <li><a href="#about">About</a></li>
-
             </ul>
 
-            <div>
-
+            <div class="nav-actions">
                 <a href="#">Login</a>
-
                 <a href="#">Sign Up</a>
-
             </div>
 
-        </nav>
+        </div>
 
-    </header>
+        <button
+            class="nav-toggle"
+            type="button"
+            aria-label="Open navigation"
+            aria-expanded="false"
+            aria-controls="primary-navigation"
+        >
+            ☰
+        </button>
+
+    </nav>
+
+</header>
 
 
     <!-- ========================================================= -->
@@ -101,104 +106,969 @@
 
                 </p>
 
-                <div>
+        <!-- Hero Actions -->
 
-                    <a href="#">Explore Platform</a>
+<div class="hero-actions">
 
-                    <a href="#">Read Declaration</a>
+    <a
+        href="#platform"
+        class="hero-action hero-action-primary"
+            >
+                Explore Peta Bahasa
+            <span aria-hidden="true"></span>
+            </a>
 
-                </div>
+            <a
+            href="#products"
+            class="hero-action hero-action-secondary"
+            >
+                Explore the Platform
+            </a>
 
-            </div>
+        </div>
 
-        </section>
+        </div>
+
+    </section>
 
 
         <!-- ========================================================= -->
         <!-- Language Infrastructure -->
         <!-- ========================================================= -->
 
-        <section id="platform">
+            <section id="platform">
+
+                <div class="container">
+
+            <!-- Section Header -->
+
+                <div class="section-header">
+
+                <p class="eyebrow">
+                    Peta Bahasa
+                </p>
+
+                 <h2>
+                    Language Infrastructure
+                </h2>
+
+                <p>
+                    Explore Indonesia's linguistic landscape through
+                    structured geographic and language data.
+                </p>
+
+        </div>
+
+
+                <!-- Peta Bahasa -->
+
+                <div class="language-map-shell">
+
+                <!-- Map Status -->
+
+                <div
+                class="language-map-status"
+                aria-live="polite"
+                >
+
+                <span class="language-map-status-label">
+                    Province
+                </span>
+
+                <strong id="language-map-region-name">
+                    Explore Indonesia
+                </strong>
+
+            </div>
+
+
+                <!-- Map Canvas -->
+
+                <svg
+                    id="language-map"
+                    viewBox="0 0 1000 500"
+                    role="img"
+                aria-label="Interactive map of Indonesia"
+                >
+                </svg>
+
+                <!-- Linguistic Information Panel -->
+
+            <div
+                id="language-map-info"
+                class="language-map-info"
+                aria-live="polite"
+                >
+            <div class="language-map-info-header">
+
+                <div>
+                <span class="language-map-info-label">
+                    Linguistic Data
+                </span>
+
+                    <h3 id="language-map-info-title">
+                    Explore Indonesia
+                    </h3>
+                </div>
+
+                <div
+                    id="language-map-language-count"
+                    class="language-map-language-count"
+                    >
+                    —
+                </div>
+
+            </div>
+
+                <p
+                    id="language-map-info-message"
+                    class="language-map-info-message"
+                >
+                    Hover over a province to explore available linguistic data.
+                </p>
+
+                <ul
+                    id="language-map-language-list"
+                     class="language-map-language-list"
+                 >
+                </ul>
+
+    <!-- Linguistic Data Provenance -->
+
+        <div
+            id="language-map-source"
+            class="language-map-source"
+            hidden
+        >
+            <span class="language-map-source-label">
+                Data Source
+            </span>
+
+            <a
+                id="language-map-source-link"
+                href="#"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                View official source
+            </a>
+
+            <span
+                id="language-map-source-accessed"
+                class="language-map-source-accessed"
+            >
+            </span>
+        </div>
+
+        </div>
+
+    </div>
+
+    </div>
+
+    </section>
+
+
+            <!-- ========================================================= -->
+            <!-- Products -->
+            <!-- ========================================================= -->
+
+            <section id="products">
 
             <div class="container">
 
-                <h2>Language Infrastructure</h2>
+                <!-- Section Header -->
+
+                <div class="section-header">
+
+                    <p class="eyebrow">
+                        Our Products
+                    </p>
+
+                    <h2>
+                        One Language Infrastructure.
+                        Multiple Ways to Participate.
+                    </h2>
+
+                    <p>
+                        "bahasabahasa" is building connected tools for
+                        exploring, learning, assessing, connecting, and
+                        advancing Indonesia's languages.
+                    </p>
+
+            </div>
+
+
+                <!-- Flagship Product -->
+
+                <article class="product-featured">
+
+                <div class="product-featured-content">
+
+                <div class="product-meta">
+
+                    <span class="product-category">
+                        Explore
+                    </span>
+
+                    <span class="product-status product-status-live">
+                        Live
+                    </span>
+
+                </div>
+
+                <h3>
+                    Peta Bahasa
+                </h3>
 
                 <p>
+                    Explore Indonesia's linguistic landscape through
+                    an interactive, research-backed map connected to
+                    verified province-level language data.
+                </p>
 
-                    Placeholder
+                <a
+                    href="#platform"
+                    class="product-link"
+                >
+                    Explore Peta Bahasa
+                    <span aria-hidden="true">→</span>
+                </a>
 
+            </div>
+
+            <div class="product-featured-stats">
+
+                <div>
+                    <strong>34</strong>
+                    <span>Source Province Records</span>
+                </div>
+
+                <div>
+                    <strong>801</strong>
+                    <span>Linguistic Records</span>
+                </div>
+
+                <div>
+                    <strong>33</strong>
+                    <span>Mapped Geographic Regions</span>
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <!-- Product Ecosystem -->
+
+        <div class="product-grid">
+
+            <!-- Kawan Bahasa -->
+
+            <article class="product-card">
+
+                <div class="product-meta">
+
+                    <span class="product-category">
+                        Connect
+                    </span>
+
+                    <span class="product-status">
+                        In Development
+                    </span>
+
+                </div>
+
+                <h3>
+                    Kawan Bahasa
+                </h3>
+
+                <p>
+                    A future language companion connecting learners,
+                    speakers, educators, and AI-assisted language
+                    experiences.
+                </p>
+
+            </article>
+
+
+            <!-- Kursus Bahasa -->
+
+            <article class="product-card">
+
+                <div class="product-meta">
+
+                    <span class="product-category">
+                        Learn
+                    </span>
+
+                    <span class="product-status">
+                        Planned
+                    </span>
+
+                </div>
+
+                <h3>
+                    Kursus Bahasa
+                </h3>
+
+                <p>
+                    Structured learning pathways for Indonesian and
+                    regional languages, designed to grow alongside
+                    educators and communities.
+                </p>
+
+            </article>
+
+
+            <!-- Kelas Bahasa -->
+
+            <article class="product-card">
+
+                <div class="product-meta">
+
+                    <span class="product-category">
+                        Learn
+                    </span>
+
+                    <span class="product-status">
+                        Planned
+                    </span>
+
+                </div>
+
+                <h3>
+                    Kelas Bahasa
+                </h3>
+
+                <p>
+                    A learning space connecting students with teachers,
+                    language practitioners, and future community-led
+                    classes.
+                </p>
+
+            </article>
+
+
+            <!-- Uji Bahasa -->
+
+            <article class="product-card">
+
+                <div class="product-meta">
+
+                    <span class="product-category">
+                        Assess
+                    </span>
+
+                    <span class="product-status">
+                        Playground in Development
+                    </span>
+
+                </div>
+
+                <h3>
+                    Uji Bahasa
+                </h3>
+
+                <p>
+                    An exploratory assessment playground for testing,
+                    understanding, and improving language abilities
+                    through structured tasks and feedback.
+                </p>
+
+            </article>
+
+
+            <!-- Jembatan Bahasa -->
+
+            <article class="product-card">
+
+                <div class="product-meta">
+
+                    <span class="product-category">
+                        Build
+                    </span>
+
+                    <span class="product-status">
+                        Research &amp; Development
+                    </span>
+
+                </div>
+
+                <h3>
+                    Jembatan Bahasa
+                </h3>
+
+                <p>
+                    Language technology infrastructure for translation,
+                    annotation, human review, AI training, and future
+                    integration with Ukara.
+                </p>
+
+            </article>
+
+        </div>
+
+        </div>
+
+    </section>
+
+            <!-- ========================================================= -->
+            <!-- Community -->
+            <!-- ========================================================= -->
+
+            <section id="community">
+
+                <div class="container">
+
+                <!-- Section Header -->
+
+                <div class="section-header">
+
+                 <p class="eyebrow">
+                     Community
+                </p>
+
+                <h2>
+                    Language Infrastructure
+                    Is Built With People.
+                 </h2>
+
+                <p>
+                    "bahasabahasa" is designed to grow with speakers,
+                    educators, researchers, annotators, AI trainers,
+                    and builders who care about Indonesia's languages.
                 </p>
 
             </div>
 
-        </section>
+
+            <!-- Community Pathways -->
+
+            <div class="community-pathways">
+
+            <!-- Speakers -->
+
+            <article class="community-role">
+
+                <span class="community-role-index">
+                    01
+                </span>
+
+                <div>
+
+                    <h3>
+                        Language Speakers
+                    </h3>
+
+                    <p>
+                        Share lived language knowledge, expressions,
+                        local usage, and linguistic context that
+                        cannot be captured by technology alone.
+                    </p>
+
+                </div>
+
+            </article>
 
 
-        <!-- ========================================================= -->
-        <!-- Products -->
-        <!-- ========================================================= -->
+            <!-- Educators -->
 
-        <section id="products">
+            <article class="community-role">
 
-            <div class="container">
+                <span class="community-role-index">
+                    02
+                </span>
 
-                <h2>Products</h2>
+                <div>
+
+                    <h3>
+                        Educators
+                    </h3>
+
+                    <p>
+                        Help shape learning materials, classes,
+                        assessments, and future language-learning
+                        pathways across the platform.
+                    </p>
+
+                </div>
+
+            </article>
+
+
+            <!-- Researchers -->
+
+            <article class="community-role">
+
+                <span class="community-role-index">
+                    03
+                </span>
+
+                <div>
+
+                    <h3>
+                        Researchers
+                    </h3>
+
+                    <p>
+                        Study linguistic data, document methodology,
+                        evaluate limitations, and contribute to
+                        responsible language research.
+                    </p>
+
+                </div>
+
+            </article>
+
+
+            <!-- Annotators and AI Trainers -->
+
+            <article class="community-role">
+
+                <span class="community-role-index">
+                    04
+                </span>
+
+                <div>
+
+                    <h3>
+                        Annotators &amp; AI Trainers
+                    </h3>
+
+                    <p>
+                        Review language tasks, annotate difficult
+                        cases, evaluate AI outputs, and help create
+                        traceable datasets for future language
+                        technology.
+                    </p>
+
+                </div>
+
+            </article>
+
+
+            <!-- Builders -->
+
+            <article class="community-role">
+
+                <span class="community-role-index">
+                    05
+                </span>
+
+                <div>
+
+                    <h3>
+                        Builders
+                    </h3>
+
+                    <p>
+                        Develop interfaces, data pipelines, tools,
+                        and language technology that turn research
+                        and community knowledge into useful systems.
+                    </p>
+
+                </div>
+
+            </article>
+
+        </div>
+
+
+        <!-- Community Closing Statement -->
+
+        <div class="community-statement">
+
+            <p>
+                Technology can organize, connect, and extend
+                language knowledge. The knowledge itself begins
+                with people.
+            </p>
+
+            <span>
+                Participation pathways will open progressively
+                as "bahasabahasa" enters service.
+            </span>
+
+            </div>
+
+        </div>
+
+    </section>
+
+<!-- ========================================================= -->
+<!-- Research -->
+<!-- ========================================================= -->
+
+<section id="research">
+
+    <div class="container">
+
+        <!-- Section Header -->
+
+        <div class="section-header">
+
+            <p class="eyebrow">
+                Research
+            </p>
+
+            <h2>
+                Infrastructure Should Be
+                Understandable, Not Just Usable.
+            </h2>
+
+            <p>
+                "bahasabahasa" documents how its language
+                infrastructure is built — including data sources,
+                processing methods, validation, limitations,
+                and lessons learned along the way.
+            </p>
+
+        </div>
+
+
+        <!-- Research Overview -->
+
+        <div class="research-layout">
+
+            <!-- Featured Research -->
+
+            <article class="research-featured">
+
+                <div class="research-meta">
+
+                    <span class="research-label">
+                        Current Research
+                    </span>
+
+                    <span class="research-status">
+                        Active
+                    </span>
+
+                </div>
+
+                <h3>
+                    Building Peta Bahasa
+                </h3>
 
                 <p>
+                    An ongoing effort to connect geographic
+                    boundaries with province-level linguistic
+                    records while preserving source provenance
+                    and documenting differences between datasets.
+                </p>
 
-                    Placeholder
 
+                <!-- Research Pipeline -->
+
+                <div class="research-pipeline">
+
+                    <div>
+                        <span>01</span>
+                        <strong>Source</strong>
+                        <small>
+                            Geographic and linguistic data
+                        </small>
+                    </div>
+
+                    <div>
+                        <span>02</span>
+                        <strong>Process</strong>
+                        <small>
+                            Ingestion and normalization
+                        </small>
+                    </div>
+
+                    <div>
+                        <span>03</span>
+                        <strong>Validate</strong>
+                        <small>
+                            Integrity and geographic joins
+                        </small>
+                    </div>
+
+                    <div>
+                        <span>04</span>
+                        <strong>Publish</strong>
+                        <small>
+                            Interactive infrastructure
+                        </small>
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- Research Evidence -->
+
+            <aside class="research-evidence">
+
+                <div class="research-evidence-item">
+
+                    <strong>
+                        34
+                    </strong>
+
+                    <span>
+                        Source Province Records
+                    </span>
+
+                </div>
+
+                <div class="research-evidence-item">
+
+                    <strong>
+                        801
+                    </strong>
+
+                    <span>
+                        Province-Level Linguistic Records
+                    </span>
+
+                </div>
+
+                <div class="research-evidence-item">
+
+                    <strong>
+                        33
+                    </strong>
+
+                    <span>
+                        Geographic Joins
+                    </span>
+
+                </div>
+
+                <div class="research-evidence-item">
+
+                    <strong>
+                        34 / 34
+                    </strong>
+
+                    <span>
+                        Ingestion Integrity Checks Passed
+                    </span>
+
+                </div>
+
+            </aside>
+
+        </div>
+
+
+        <!-- Research Principles -->
+
+        <div class="research-principles">
+
+            <article>
+
+                <span>
+                    Methodology
+                </span>
+
+                <h3>
+                    Show the Process
+                </h3>
+
+                <p>
+                    Data pipelines, transformations, and validation
+                    decisions should be documented so the resulting
+                    infrastructure can be understood and reviewed.
+                </p>
+
+            </article>
+
+
+            <article>
+
+                <span>
+                    Provenance
+                </span>
+
+                <h3>
+                    Preserve the Source
+                </h3>
+
+                <p>
+                    Linguistic records retain province-level source
+                    information so users can trace data back to the
+                    institution and dataset from which it originated.
+                </p>
+
+            </article>
+
+
+            <article>
+
+                <span>
+                    Limitations
+                </span>
+
+                <h3>
+                    Document the Gaps
+                </h3>
+
+                <p>
+                    Differences between geographic and linguistic
+                    datasets are recorded rather than silently
+                    corrected or hidden.
+                </p>
+
+            </article>
+
+        </div>
+
+
+        <!-- Research Note -->
+
+        <div class="research-note">
+
+            <p>
+                Peta Bahasa is an evolving research infrastructure.
+                Dataset coverage reflects the sources and geographic
+                snapshots currently integrated into the platform.
+            </p>
+
+            <span>
+                Research documentation will expand alongside
+                the platform.
+            </span>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ========================================================= -->
+<!-- About -->
+<!-- ========================================================= -->
+
+<section id="about">
+
+    <div class="container">
+
+        <!-- Section Header -->
+
+        <div class="section-header">
+
+            <p class="eyebrow">
+                About "bahasabahasa"
+            </p>
+
+            <h2>
+                Building Indonesia's Language Infrastructure
+                for Humans and AI.
+            </h2>
+
+        </div>
+
+
+        <!-- About Story -->
+
+        <div class="about-layout">
+
+            <div class="about-intro">
+
+                <p>
+                    Indonesia's languages carry knowledge,
+                    identity, history, and ways of understanding
+                    the world.
+                </p>
+
+                <p>
+                    "bahasabahasa" exists to help preserve,
+                    connect, and responsibly advance that
+                    linguistic heritage through technology,
+                    research, learning, and human participation.
                 </p>
 
             </div>
 
-        </section>
 
+            <!-- Mission -->
 
-        <!-- ========================================================= -->
-        <!-- Community -->
-        <!-- ========================================================= -->
+            <div class="about-mission">
 
-        <section id="community">
+                <span>
+                    Our Direction
+                </span>
 
-            <div class="container">
-
-                <h2>Community</h2>
-
-            </div>
-
-        </section>
-
-
-        <!-- ========================================================= -->
-        <!-- Research -->
-        <!-- ========================================================= -->
-
-        <section id="research">
-
-            <div class="container">
-
-                <h2>Research</h2>
+                <p>
+                    Build infrastructure that helps Indonesia's
+                    languages remain accessible, useful, and
+                    represented as technology continues to evolve.
+                </p>
 
             </div>
 
-        </section>
+        </div>
 
 
-        <!-- ========================================================= -->
-        <!-- About -->
-        <!-- ========================================================= -->
+        <!-- Principles -->
 
-        <section id="about">
+        <div class="about-principles">
 
-            <div class="container">
+            <div>
 
-                <h2>About BahasaBahasa</h2>
+                <span>
+                    01
+                </span>
+
+                <p>
+                    Language communities come before technology.
+                </p>
 
             </div>
 
-        </section>
+            <div>
+
+                <span>
+                    02
+                </span>
+
+                <p>
+                    Sources, methods, and limitations should
+                    remain visible.
+                </p>
+
+            </div>
+
+            <div>
+
+                <span>
+                    03
+                </span>
+
+                <p>
+                    AI should extend human knowledge, not erase
+                    its context.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- Closing Statement -->
+
+        <div class="about-closing">
+
+            <p>
+                "bahasabahasa" is being built as long-term
+                infrastructure — one language, dataset,
+                experiment, and contribution at a time.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+</main>
 
     </main>
 
@@ -213,13 +1083,13 @@
 
             <p>
 
-                © 2026 BahasaBahasa
+                © 2026 "bahasabahasa"
 
             </p>
 
             <p>
 
-                Building Indonesia's Language Infrastructure
+                Indonesia's Language Infrastructure
 
                 for Humans and AI.
 
@@ -231,6 +1101,8 @@
 
 
     <script src="js/app.js"></script>
+
+    <script src="js/language-map.js"></script>
 
 </body>
 
