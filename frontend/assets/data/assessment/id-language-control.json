@@ -1,0 +1,466 @@
+{
+    "schemaVersion": "0.1.0",
+    "datasetVersion": "0.1.0",
+    "language": "id",
+    "skill": "language-control",
+    "status": "pilot",
+    "answerIndexBase": 0,
+    "title": "Bahasa Indonesia Language Control Pilot Item Bank",
+    "description": "Original BahasaBahasa language-control items for the Uji Bahasa Indonesia Playground pilot.",
+    "difficultyScale": {
+        "1": "foundation",
+        "2": "developing",
+        "3": "stronger"
+    },
+    "constructs": [
+        "word_choice",
+        "sentence_effectiveness",
+        "word_formation",
+        "logical_connection",
+        "standard_written_usage"
+    ],
+    "provenance": {
+        "type": "original",
+        "creator": "BahasaBahasa",
+        "created": "2026",
+        "sourceMaterial": null
+    },
+    "stimuli": [],
+    "items": [
+        {
+            "id": "LC-ID-F-001",
+            "version": "1.0",
+            "language": "id",
+            "skill": "language-control",
+            "domain": "general",
+            "difficulty": 1,
+            "construct": "word_choice",
+            "question": "Pilih kata yang paling tepat untuk melengkapi kalimat berikut: \"Besok saya ___ ke kantor lebih pagi.\"",
+            "options": [
+                "datang",
+                "datangnya",
+                "kedatangan",
+                "didatangkan"
+            ],
+            "correctAnswer": 0,
+            "feedback": {
+                "correct": "Benar. Kata \"datang\" tepat digunakan sebagai predikat dalam kalimat tersebut.",
+                "incorrect": "Perhatikan bentuk kata yang dapat berfungsi langsung sebagai predikat setelah subjek \"saya\".",
+                "practiceNext": "Latih memilih bentuk kata yang sesuai dengan fungsi kata dalam kalimat."
+            },
+            "provenance": {
+                "type": "original",
+                "creator": "BahasaBahasa",
+                "created": "2026",
+                "sourceMaterial": null
+            },
+            "status": "pilot"
+        },
+        {
+            "id": "LC-ID-F-002",
+            "version": "1.0",
+            "language": "id",
+            "skill": "language-control",
+            "domain": "general",
+            "difficulty": 1,
+            "construct": "logical_connection",
+            "question": "Pilih kata penghubung yang paling tepat: \"Saya membawa payung ___ hari terlihat mendung.\"",
+            "options": [
+                "karena",
+                "tetapi",
+                "atau",
+                "setelah"
+            ],
+            "correctAnswer": 0,
+            "feedback": {
+                "correct": "Benar. \"Karena\" menunjukkan hubungan sebab antara keadaan mendung dan tindakan membawa payung.",
+                "incorrect": "Cari kata penghubung yang menyatakan alasan atau sebab.",
+                "practiceNext": "Latih mengenali hubungan sebab, pertentangan, pilihan, dan waktu dalam kalimat."
+            },
+            "provenance": {
+                "type": "original",
+                "creator": "BahasaBahasa",
+                "created": "2026",
+                "sourceMaterial": null
+            },
+            "status": "pilot"
+        },
+        {
+            "id": "LC-ID-F-003",
+            "version": "1.0",
+            "language": "id",
+            "skill": "language-control",
+            "domain": "general",
+            "difficulty": 1,
+            "construct": "word_formation",
+            "question": "Pilih kata yang paling tepat: \"Petugas sedang ___ dokumen tersebut.\"",
+            "options": [
+                "pemeriksaan",
+                "memeriksa",
+                "diperiksa",
+                "pemeriksa"
+            ],
+            "correctAnswer": 1,
+            "feedback": {
+                "correct": "Benar. \"Memeriksa\" merupakan bentuk verba aktif yang sesuai dengan subjek \"petugas\".",
+                "incorrect": "Perhatikan bahwa subjek melakukan tindakan terhadap dokumen.",
+                "practiceNext": "Latih membedakan verba aktif, verba pasif, dan bentuk nomina."
+            },
+            "provenance": {
+                "type": "original",
+                "creator": "BahasaBahasa",
+                "created": "2026",
+                "sourceMaterial": null
+            },
+            "status": "pilot"
+        },
+        {
+            "id": "LC-ID-F-004",
+            "version": "1.0",
+            "language": "id",
+            "skill": "language-control",
+            "domain": "general",
+            "difficulty": 1,
+            "construct": "sentence_effectiveness",
+            "question": "Pilih kalimat yang paling jelas dan efektif.",
+            "options": [
+                "Rapat mulai pukul delapan.",
+                "Rapat itu mulai adalah pada pukul delapan.",
+                "Rapat mulai daripada pukul delapan.",
+                "Rapat yang mulai pukul delapan adalah dimulai."
+            ],
+            "correctAnswer": 0,
+            "feedback": {
+                "correct": "Benar. \"Rapat mulai pukul delapan\" menyampaikan informasi secara jelas dan ringkas.",
+                "incorrect": "Pilih kalimat yang tidak memiliki unsur berlebihan atau susunan yang tidak perlu.",
+                "practiceNext": "Latih mengenali kalimat efektif dengan struktur yang jelas dan hemat."
+            },
+            "provenance": {
+                "type": "original",
+                "creator": "BahasaBahasa",
+                "created": "2026",
+                "sourceMaterial": null
+            },
+            "status": "pilot"
+        },
+        {
+            "id": "LC-ID-F-005",
+            "version": "1.0",
+            "language": "id",
+            "skill": "language-control",
+            "domain": "general",
+            "difficulty": 1,
+            "construct": "standard_written_usage",
+            "question": "Pilih bentuk kata baku untuk melengkapi kalimat: \"Saya sudah meminta ___ kepada petugas.\"",
+            "options": [
+                "izin",
+                "ijin",
+                "idzin",
+                "izhin"
+            ],
+            "correctAnswer": 0,
+            "feedback": {
+                "correct": "Benar. Bentuk bakunya adalah \"izin\".",
+                "incorrect": "Perhatikan bentuk ejaan baku kata tersebut dalam bahasa Indonesia.",
+                "practiceNext": "Latih mengenali bentuk kata baku yang umum digunakan dalam bahasa tulis."
+            },
+            "provenance": {
+                "type": "original",
+                "creator": "BahasaBahasa",
+                "created": "2026",
+                "sourceMaterial": null
+            },
+            "status": "pilot"
+        },
+        {
+            "id": "LC-ID-D-001",
+            "version": "1.0",
+            "language": "id",
+            "skill": "language-control",
+            "domain": "workplace",
+            "difficulty": 2,
+            "construct": "logical_connection",
+            "question": "Pilih kata penghubung yang paling tepat: \"Produksi dihentikan sementara ___ teknisi dapat memeriksa mesin dengan aman.\"",
+            "options": [
+                "agar",
+                "meskipun",
+                "sedangkan",
+                "sejak"
+            ],
+            "correctAnswer": 0,
+            "feedback": {
+                "correct": "Benar. \"Agar\" menunjukkan tujuan penghentian sementara produksi.",
+                "incorrect": "Cari kata penghubung yang menunjukkan tujuan dari tindakan menghentikan produksi.",
+                "practiceNext": "Latih membedakan hubungan tujuan dari hubungan pertentangan, perbandingan, dan waktu."
+            },
+            "provenance": {
+                "type": "original",
+                "creator": "BahasaBahasa",
+                "created": "2026",
+                "sourceMaterial": null
+            },
+            "status": "pilot"
+        },
+        {
+            "id": "LC-ID-D-002",
+            "version": "1.0",
+            "language": "id",
+            "skill": "language-control",
+            "domain": "workplace",
+            "difficulty": 2,
+            "construct": "sentence_effectiveness",
+            "question": "Pilih kalimat yang paling efektif.",
+            "options": [
+                "Para peserta diminta untuk mengisi formulir sebelum masuk.",
+                "Para peserta-peserta diminta untuk mengisi formulir sebelum masuk.",
+                "Para peserta diminta agar supaya mengisi formulir sebelum masuk.",
+                "Untuk para peserta diminta untuk mengisi formulir sebelum masuk."
+            ],
+            "correctAnswer": 0,
+            "feedback": {
+                "correct": "Benar. Kalimat tersebut memiliki struktur yang jelas tanpa pengulangan yang tidak diperlukan.",
+                "incorrect": "Periksa pilihan yang mengandung pengulangan atau penggunaan kata penghubung yang berlebihan.",
+                "practiceNext": "Latih mengenali pemborosan kata dan struktur yang mengurangi efektivitas kalimat."
+            },
+            "provenance": {
+                "type": "original",
+                "creator": "BahasaBahasa",
+                "created": "2026",
+                "sourceMaterial": null
+            },
+            "status": "pilot"
+        },
+        {
+            "id": "LC-ID-D-003",
+            "version": "1.0",
+            "language": "id",
+            "skill": "language-control",
+            "domain": "workplace",
+            "difficulty": 2,
+            "construct": "word_formation",
+            "question": "Pilih bentuk kata yang paling tepat: \"Perusahaan akan ___ prosedur keselamatan bulan depan.\"",
+            "options": [
+                "pembaruan",
+                "diperbarui",
+                "memperbarui",
+                "terbarukan"
+            ],
+            "correctAnswer": 2,
+            "feedback": {
+                "correct": "Benar. \"Memperbarui\" merupakan verba aktif yang sesuai dengan subjek \"perusahaan\".",
+                "incorrect": "Cari bentuk verba aktif yang menunjukkan tindakan yang dilakukan oleh perusahaan.",
+                "practiceNext": "Latih memilih bentuk berimbuhan berdasarkan fungsi sintaksisnya."
+            },
+            "provenance": {
+                "type": "original",
+                "creator": "BahasaBahasa",
+                "created": "2026",
+                "sourceMaterial": null
+            },
+            "status": "pilot"
+        },
+        {
+            "id": "LC-ID-D-004",
+            "version": "1.0",
+            "language": "id",
+            "skill": "language-control",
+            "domain": "workplace",
+            "difficulty": 2,
+            "construct": "word_choice",
+            "question": "Pilih kata yang paling tepat: \"Manajer meminta laporan yang lebih ___ mengenai hasil pemeriksaan.\"",
+            "options": [
+                "rinci",
+                "rincian",
+                "merinci",
+                "dirincikan"
+            ],
+            "correctAnswer": 0,
+            "feedback": {
+                "correct": "Benar. \"Rinci\" tepat digunakan untuk menerangkan sifat laporan yang diminta.",
+                "incorrect": "Cari bentuk kata yang dapat menerangkan kata benda \"laporan\" dalam konteks ini.",
+                "practiceNext": "Latih memilih bentuk kata berdasarkan perannya di dalam frasa."
+            },
+            "provenance": {
+                "type": "original",
+                "creator": "BahasaBahasa",
+                "created": "2026",
+                "sourceMaterial": null
+            },
+            "status": "pilot"
+        },
+        {
+            "id": "LC-ID-D-005",
+            "version": "1.0",
+            "language": "id",
+            "skill": "language-control",
+            "domain": "workplace",
+            "difficulty": 2,
+            "construct": "logical_connection",
+            "question": "Pilih kata penghubung yang paling tepat: \"Mesin sudah diperbaiki, ___ masih diperlukan pengujian tambahan sebelum digunakan.\"",
+            "options": [
+                "karena",
+                "tetapi",
+                "sehingga",
+                "setelah"
+            ],
+            "correctAnswer": 1,
+            "feedback": {
+                "correct": "Benar. \"Tetapi\" menunjukkan pertentangan antara mesin yang sudah diperbaiki dan kebutuhan pengujian tambahan.",
+                "incorrect": "Cari kata penghubung yang menunjukkan adanya kontras antara dua keadaan.",
+                "practiceNext": "Latih mengenali hubungan pertentangan dalam kalimat majemuk."
+            },
+            "provenance": {
+                "type": "original",
+                "creator": "BahasaBahasa",
+                "created": "2026",
+                "sourceMaterial": null
+            },
+            "status": "pilot"
+        },
+        {
+            "id": "LC-ID-S-001",
+            "version": "1.0",
+            "language": "id",
+            "skill": "language-control",
+            "domain": "workplace",
+            "difficulty": 3,
+            "construct": "sentence_effectiveness",
+            "question": "Pilih kalimat yang paling efektif.",
+            "options": [
+                "Hasil pemeriksaan menunjukkan mesin bahwa aman digunakan.",
+                "Hasil pemeriksaan menunjukkan bahwa mesin aman digunakan.",
+                "Hasil daripada pemeriksaan menunjukkan bahwa mesin adalah aman untuk digunakan.",
+                "Bahwa mesin aman digunakan menunjukkan dari hasil pemeriksaan."
+            ],
+            "correctAnswer": 1,
+            "feedback": {
+                "correct": "Benar. Kalimat tersebut memiliki hubungan antarklausa yang jelas dan struktur yang efektif.",
+                "incorrect": "Perhatikan posisi \"bahwa\" dan hindari unsur yang tidak diperlukan.",
+                "practiceNext": "Latih mengenali struktur kalimat kompleks yang jelas dan efektif."
+            },
+            "provenance": {
+                "type": "original",
+                "creator": "BahasaBahasa",
+                "created": "2026",
+                "sourceMaterial": null
+            },
+            "status": "pilot"
+        },
+        {
+            "id": "LC-ID-S-002",
+            "version": "1.0",
+            "language": "id",
+            "skill": "language-control",
+            "domain": "workplace",
+            "difficulty": 3,
+            "construct": "logical_connection",
+            "question": "Pilih kata penghubung yang paling tepat: \"Pelatihan tetap dilanjutkan ___ jumlah peserta lebih sedikit daripada yang diperkirakan.\"",
+            "options": [
+                "karena",
+                "agar",
+                "meskipun",
+                "sehingga"
+            ],
+            "correctAnswer": 2,
+            "feedback": {
+                "correct": "Benar. \"Meskipun\" menunjukkan bahwa pelatihan tetap berlangsung walaupun jumlah peserta lebih sedikit.",
+                "incorrect": "Cari kata penghubung yang menyatakan pertentangan atau konsesi.",
+                "practiceNext": "Latih memahami hubungan konsesif dalam kalimat kompleks."
+            },
+            "provenance": {
+                "type": "original",
+                "creator": "BahasaBahasa",
+                "created": "2026",
+                "sourceMaterial": null
+            },
+            "status": "pilot"
+        },
+        {
+            "id": "LC-ID-S-003",
+            "version": "1.0",
+            "language": "id",
+            "skill": "language-control",
+            "domain": "workplace",
+            "difficulty": 3,
+            "construct": "word_formation",
+            "question": "Pilih frasa yang paling tepat: \"Tim pengembang akan ___ pada sistem sebelum peluncuran berikutnya.\"",
+            "options": [
+                "melakukan penyempurnaan",
+                "dilakukan penyempurnaan",
+                "terlakukan penyempurnaan",
+                "penyempurnaan melakukan"
+            ],
+            "correctAnswer": 0,
+            "feedback": {
+                "correct": "Benar. \"Melakukan penyempurnaan\" sesuai dengan subjek aktif \"tim pengembang\".",
+                "incorrect": "Perhatikan bahwa subjek kalimat adalah pihak yang melakukan tindakan.",
+                "practiceNext": "Latih memilih konstruksi verba yang sesuai dengan hubungan antara subjek dan tindakan."
+            },
+            "provenance": {
+                "type": "original",
+                "creator": "BahasaBahasa",
+                "created": "2026",
+                "sourceMaterial": null
+            },
+            "status": "pilot"
+        },
+        {
+            "id": "LC-ID-S-004",
+            "version": "1.0",
+            "language": "id",
+            "skill": "language-control",
+            "domain": "workplace",
+            "difficulty": 3,
+            "construct": "standard_written_usage",
+            "question": "Pilih kalimat dengan penggunaan kata depan yang tepat.",
+            "options": [
+                "Laporan itu diserahkan kepada manajer.",
+                "Laporan itu diserahkan daripada manajer.",
+                "Laporan itu diserahkan terhadap ke manajer.",
+                "Laporan itu diserahkan dengan kepada manajer."
+            ],
+            "correctAnswer": 0,
+            "feedback": {
+                "correct": "Benar. Kata depan \"kepada\" tepat digunakan untuk menunjukkan pihak yang menerima laporan.",
+                "incorrect": "Pilih kata depan yang tepat untuk menunjukkan penerima suatu tindakan.",
+                "practiceNext": "Latih penggunaan kata depan dalam ragam tulis bahasa Indonesia."
+            },
+            "provenance": {
+                "type": "original",
+                "creator": "BahasaBahasa",
+                "created": "2026",
+                "sourceMaterial": null
+            },
+            "status": "pilot"
+        },
+        {
+            "id": "LC-ID-S-005",
+            "version": "1.0",
+            "language": "id",
+            "skill": "language-control",
+            "domain": "workplace",
+            "difficulty": 3,
+            "construct": "sentence_effectiveness",
+            "question": "Pilih kalimat yang paling efektif.",
+            "options": [
+                "Evaluasi ini bertujuan adalah untuk mengetahui kendala yang terjadi.",
+                "Evaluasi ini bertujuan untuk mengetahui kendala yang terjadi.",
+                "Tujuan evaluasi ini bertujuan untuk mengetahui kendala yang terjadi.",
+                "Evaluasi ini adalah bertujuan mengetahui daripada kendala yang terjadi."
+            ],
+            "correctAnswer": 1,
+            "feedback": {
+                "correct": "Benar. Kalimat tersebut menyampaikan tujuan secara jelas tanpa unsur yang berlebihan.",
+                "incorrect": "Periksa apakah ada pengulangan makna atau penggunaan unsur \"adalah\" yang tidak diperlukan.",
+                "practiceNext": "Latih menyunting kalimat agar lebih hemat, jelas, dan efektif."
+            },
+            "provenance": {
+                "type": "original",
+                "creator": "BahasaBahasa",
+                "created": "2026",
+                "sourceMaterial": null
+            },
+            "status": "pilot"
+        }
+    ]
+}

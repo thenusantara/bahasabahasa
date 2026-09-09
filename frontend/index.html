@@ -6,6 +6,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <meta
+    http-equiv="Content-Security-Policy"
+    content="
+        default-src 'self';
+        script-src 'self';
+        style-src 'self';
+        img-src 'self' data:;
+        connect-src 'self';
+        font-src 'self';
+        object-src 'none';
+        base-uri 'self';
+        form-action 'self';
+    "
+    >
+
     <title>"bahasabahasa" | Building Indonesia's Language Infrastructure</title>
 
     <link rel="icon" type="image/png" href="assets/icon/bahasabahasa-favicon-32.png">
@@ -454,27 +469,36 @@
 
             <article class="product-card">
 
-                <div class="product-meta">
+            <div class="product-meta">
 
-                    <span class="product-category">
-                        Assess
-                    </span>
+        <span class="product-category">
+            Assess
+        </span>
 
-                    <span class="product-status">
-                        Playground in Development
-                    </span>
+        <span class="product-status product-status-live">
+            Live
+        </span>
 
-                </div>
+            </div>
 
-                <h3>
-                    Uji Bahasa
-                </h3>
+            <h3>
+                Uji Bahasa Indonesia Playground
+            </h3>
 
-                <p>
-                    An exploratory assessment playground for testing,
-                    understanding, and improving language abilities
-                    through structured tasks and feedback.
-                </p>
+            <p>
+                An independent learning and preparation playground
+                for practicing Bahasa Indonesia through structured
+                reading, language control, listening, and speaking
+                activities with learning-focused feedback.
+            </p>
+
+            <a
+                href="./uji-bahasa/"
+                class="product-link"
+            >
+                Start Practice
+                <span aria-hidden="true">→</span>
+            </a>
 
             </article>
 

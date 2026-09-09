@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="Uji Bahasa Indonesia Playground by BahasaBahasa — an independent learning and preparation tool for practicing Bahasa Indonesia."
+    >
+
+    <meta
+        http-equiv="Content-Security-Policy"
+        content="
+            default-src 'self';
+            script-src 'self';
+            style-src 'self';
+            img-src 'self' data:;
+            media-src 'self' blob:;
+            connect-src 'self';
+            font-src 'self';
+            object-src 'none';
+            base-uri 'self';
+            form-action 'self';
+        "
+    >
+
+    <title>Uji Bahasa Indonesia Playground | "bahasabahasa"</title>
+
+    <!-- =========================================
+     FAVICON
+    ========================================= -->
+
+    <link
+    rel="icon"
+    type="image/x-icon"
+    href="../assets/icon/bahasabahasa-favicon-32.png"
+    >
+
+    <link
+    rel="icon"
+    type="image/png"
+    sizes="32x32"
+    href="../assets/icon/bahasabahasa-favicon-32.png"
+    >
+
+    <link
+    rel="apple-touch-icon"
+    sizes="180x180"
+    href="../assets/icon/bahasabahasa-favicon-180.png"
+    >
+
+
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/uji-bahasa.css">
+
+    <script
+        src="../js/uji-bahasa/app.js"
+        type="module"
+    ></script>
+</head>
+
+<body class="uji-page">
+
+    <a class="skip-link" href="#uji-main">
+        Skip to main content
+    </a>
+
+<header class="uji-header">
+    <div class="uji-container uji-header__inner">
+
+        <a
+            class="uji-brand"
+            href="../"
+            aria-label="BahasaBahasa home"
+        >
+            <img
+                src="../assets/logo/logo-bahasabahasa.svg"
+                alt="BahasaBahasa"
+                class="uji-brand__logo"
+            >
+        </a>
+
+        <a
+            class="uji-header__back"
+            href="../"
+        >
+            Back to Platform
+        </a>
+
+        </div>
+    </header>
+
+    <main id="uji-main">
+
+        <!-- =========================================
+             UJI BAHASA APPLICATION
+        ========================================== -->
+
+        <section
+            class="uji-app"
+            aria-labelledby="uji-title"
+        >
+            <div class="uji-container">
+
+                <div
+                    id="uji-app"
+                    class="uji-app__shell"
+                    data-screen="welcome"
+                >
+
+                    <!-- =================================
+                         SCREEN: WELCOME
+                    ================================== -->
+
+                    <section
+                        id="screen-welcome"
+                        class="uji-screen"
+                        data-uji-screen="welcome"
+                    >
+                        <p class="uji-eyebrow">
+                            BahasaBahasa · Pilot
+                        </p>
+
+                        <h1 id="uji-title">
+                            Uji Bahasa Indonesia Playground
+                        </h1>
+
+                        <p class="uji-lead">
+                            Practice your Bahasa Indonesia.
+                            Discover what to improve.
+                            Prepare for your journey toward
+                            the official UKBI.
+                        </p>
+
+                        <div
+                            class="uji-notice"
+                            role="note"
+                            aria-label="Independent learning tool disclosure"
+                        >
+                            <strong>Independent learning and preparation tool.</strong>
+
+                            <p>
+                                Not affiliated with or endorsed by the official
+                                UKBI. Results are learning signals, not official
+                                UKBI scores or certification.
+                            </p>
+                        </div>
+
+                        <div class="uji-actions">
+                            <button
+                                id="uji-start"
+                                class="uji-button uji-button--primary"
+                                type="button"
+                            >
+                                Start Playground
+                            </button>
+
+                            <a
+                                class="uji-button uji-button--secondary"
+                                href="#about-result"
+                            >
+                                How it works
+                            </a>
+                        </div>
+                    </section>
+
+
+                    <!-- =================================
+                         SCREEN: GOAL
+                    ================================== -->
+
+                    <section
+                        id="screen-goal"
+                        class="uji-screen"
+                        data-uji-screen="goal"
+                        hidden
+                        aria-labelledby="goal-title"
+                    >
+                        <p class="uji-step">
+                            Step 1
+                        </p>
+
+                        <h2 id="goal-title">
+                            What would you like to practice?
+                        </h2>
+
+                        <div class="uji-choice-grid">
+
+                            <button
+                                class="uji-choice"
+                                type="button"
+                                data-goal="general"
+                            >
+                                <strong>General Indonesian</strong>
+                                <span>
+                                    Everyday communication and public information.
+                                </span>
+                            </button>
+
+                            <button
+                                class="uji-choice"
+                                type="button"
+                                data-goal="workplace"
+                            >
+                                <strong>Workplace Indonesian</strong>
+                                <span>
+                                    Instructions, notices, messages, and
+                                    workplace communication.
+                                </span>
+                            </button>
+
+                        </div>
+                    </section>
+
+
+                    <!-- =================================
+                         SCREEN: DEVICE CHECK
+                    ================================== -->
+
+                    <section
+                        id="screen-device"
+                        class="uji-screen"
+                        data-uji-screen="device"
+                        hidden
+                        aria-labelledby="device-title"
+                    >
+                        <p class="uji-step">
+                            Step 2
+                        </p>
+
+                        <h2 id="device-title">
+                            Check your device
+                        </h2>
+
+                        <p>
+                            Listening practice uses audio. Speaking practice
+                            can use your microphone for a local practice
+                            recording.
+                        </p>
+
+                        <div id="uji-device-status">
+                            <p>
+                                Device tools will be checked before the
+                                diagnostic begins.
+                            </p>
+                        </div>
+
+                        <button
+                            id="uji-device-continue"
+                            class="uji-button uji-button--primary"
+                            type="button"
+                        >
+                            Continue
+                        </button>
+                    </section>
+
+
+        <section
+            class="uji-screen"
+            data-uji-screen="assessment"
+            aria-labelledby="assessment-title"
+            hidden
+        >
+         <div class="uji-assessment">
+        <header class="uji-assessment__header">
+            <div>
+                <p
+                    class="uji-eyebrow"
+                    id="assessment-skill"
+                >
+                    Reading
+                </p>
+
+                <h1 id="assessment-title">
+                    Quick Diagnostic
+                </h1>
+            </div>
+
+            <p
+                class="uji-assessment__progress"
+                id="assessment-progress"
+                aria-live="polite"
+            >
+                Question 1 of 5
+            </p>
+        </header>
+
+        <div
+            class="uji-assessment__level"
+            aria-label="Current practice difficulty"
+        >
+            <span>Practice level</span>
+            <strong id="assessment-difficulty">
+                Developing
+            </strong>
+        </div>
+
+        <article
+            class="uji-question-card"
+            id="assessment-question-card"
+        >
+            <div
+                class="uji-stimulus"
+                id="assessment-stimulus"
+            ></div>
+
+            <div
+                class="uji-audio"
+                id="assessment-audio"
+                hidden
+            >
+
+            <p class="uji-audio__label">
+                Listening stimulus
+            </p>
+
+            <audio
+                id="assessment-audio-player"
+                controls
+                preload="metadata"
+            ></audio>
+
+            <p
+                class="uji-audio__status"
+                id="assessment-audio-status"
+                aria-live="polite"
+            ></p>
+        </div>
+
+            <fieldset class="uji-options">
+                <legend
+                    class="uji-question"
+                    id="assessment-question"
+                >
+                    Loading question…
+                </legend>
+
+                <div
+                    id="assessment-options"
+                    class="uji-options__list"
+                ></div>
+            </fieldset>
+        </article>
+
+        <p
+            id="assessment-runtime-message"
+            class="uji-runtime-message"
+            role="status"
+            aria-live="polite"
+        ></p>
+    </div>
+
+    <div class="uji-assessment__actions">
+    <button
+        class="uji-button uji-button--primary"
+        id="assessment-continue"
+        type="button"
+        disabled
+    >
+        Continue
+    </button>
+    </div>
+
+        </section>
+
+
+                    <!-- =================================
+                         SCREEN: SPEAKING LAB
+                    ================================== -->
+
+                    <section
+                        id="screen-speaking"
+                        class="uji-screen"
+                        data-uji-screen="speaking"
+                        hidden
+                        aria-labelledby="speaking-title"
+                    >
+                        <p class="uji-step">
+                            Speaking Practice Lab
+                        </p>
+
+                        <h2 id="speaking-title">
+                            Practice speaking in your browser
+                        </h2>
+
+                        <div id="speaking-content"></div>
+
+                    <div
+                            id="speaking-preparation"
+                            class="uji-speaking__preparation"
+                        >
+                        <p
+                            id="speaking-preparation-status"
+                            aria-live="polite"
+                        >
+                        Ready to prepare.
+                        </p>
+
+                        <p
+                            id="speaking-preparation-timer"
+                            class="uji-speaking__timer"
+                            aria-label="Preparation time remaining"
+                        >
+                            00:30
+                        </p>
+
+                        <button
+                            id="speaking-start-preparation"
+                            class="button button--primary"
+                            type="button"
+                        >
+                                Start Preparation
+                        </button>
+
+                    </div>
+
+                    <div
+                        id="speaking-recorder"
+                        class="uji-speaking__recorder"
+                        hidden
+                    >
+                    <p
+                        id="speaking-recorder-status"
+                        aria-live="polite"
+                    >
+                        Microphone is not enabled.
+                    </p>
+
+                    <button
+                        id="speaking-enable-microphone"
+                        class="button button--primary"
+                        type="button"
+                    >
+                        Enable Microphone
+                    </button>
+
+                    </div>
+
+                    <div
+                        class="uji-notice"
+                        role="note"
+                    >
+                        <strong>Your recording stays in your browser.</strong>
+
+                        <p>
+                            BahasaBahasa does not upload your practice
+                            recording in this pilot.
+                        </p>
+                    </div>
+
+                    <button
+                        id="speaking-start-recording"
+                        class="button button--primary"
+                        type="button"
+                        disabled
+                    >
+                        Start Recording
+                    </button>
+
+                    <button
+                        id="speaking-stop-recording"
+                        class="button button--secondary"
+                        type="button"
+                        disabled
+                    >
+                        Stop Recording
+                    </button>
+
+                    <div
+                        id="speaking-playback"
+                        class="uji-speaking__playback"
+                        hidden
+                    >
+                    <p id="speaking-playback-status">
+                        Your local practice recording is ready.
+                    </p>
+
+                    <audio
+                        id="speaking-playback-audio"
+                        controls
+                        preload="metadata"
+                    ></audio>
+
+            <div class="uji-speaking__recording-actions">
+                <button
+                    id="speaking-retry-recording"
+                    class="button button--secondary"
+                type="button"
+                >
+                    Record Again
+                </button>
+
+                <button
+                    id="speaking-discard-recording"
+                    class="button button--secondary"
+                    type="button"
+                >
+                    Discard Recording
+                </button>
+
+                <button
+                    id="speaking-continue-reflection"
+                    class="button button--primary"
+                    type="button"
+                >
+                    Continue to Self-Reflection
+                </button>
+            </div>
+        </div>
+
+            <div
+                id="speaking-self-reflection"
+                class="uji-speaking__reflection"
+                hidden
+            >
+            <h3>Self-Reflection</h3>
+
+            <p>
+                Listen to your response and reflect on how clearly
+                you communicated your ideas.
+            </p>
+
+            <fieldset>
+            <legend>
+                Based on this practice response:
+            </legend>
+
+        <label>
+            <input
+                type="checkbox"
+                name="speaking-reflection"
+                value="topic-response"
+            >
+            I responded to the topic.
+        </label>
+
+        <label>
+            <input
+                type="checkbox"
+                name="speaking-reflection"
+                value="organization"
+            >
+            I organized my ideas clearly.
+        </label>
+
+        <label>
+            <input
+                type="checkbox"
+                name="speaking-reflection"
+                value="detail"
+            >
+            I included enough detail.
+        </label>
+
+        <label>
+            <input
+                type="checkbox"
+                name="speaking-reflection"
+                value="understandable"
+            >
+            My explanation was understandable.
+        </label>
+        </fieldset>
+
+            <p class="uji-speaking__reflection-note">
+                These reflections are for your own learning.
+                They are not an official score or proficiency rating.
+            </p>
+
+            <button
+                id="speaking-complete-reflection"
+                class="button button--primary"
+                type="button"
+            >
+                Complete Reflection
+            </button>
+        </div>
+
+        <div
+            id="speaking-completion"
+            class="uji-speaking__completion"
+            hidden
+        >
+        <div
+            class="uji-speaking__completion-mark"
+            aria-hidden="true"
+        >
+            ✓
+        </div>
+
+        <p class="uji-eyebrow">
+            Practice Complete
+        </p>
+
+        <h2>
+            You completed the Uji Bahasa Indonesia Playground.
+        </h2>
+
+        <p>
+            You practiced four areas of Bahasa Indonesia:
+            reading, language control, listening, and speaking.
+        </p>
+
+        <p>
+            This session is a learning signal, not an official
+            UKBI score, proficiency level, or certification.
+        </p>
+
+        <p>
+            <strong>1 practice session completed</strong>
+        </p>
+
+            <div class="uji-actions">
+                    <button
+                    id="speaking-view-results"
+                    class="uji-button"
+                    type="button"
+                >
+                    View Learning Profile
+                </button>
+            </div>
+    </div>
+
+        </section>
+
+                    <!-- =================================
+                         SCREEN: RESULTS
+                    ================================== -->
+
+                    <section
+                        id="screen-results"
+                        class="uji-screen"
+                        data-uji-screen="results"
+                        hidden
+                        aria-labelledby="results-title"
+                    >
+                        <p class="uji-step">
+                            Your Learning Profile
+                        </p>
+
+                        <h2 id="results-title">
+                            What did this session show?
+                        </h2>
+
+                        <div
+                            id="learning-profile"
+                            aria-live="polite"
+                        ></div>
+
+                        <div class="uji-actions">
+                            <button
+                                id="uji-restart"
+                                class="uji-button uji-button--primary"
+                                type="button"
+                            >
+                                Practice Again
+                            </button>
+
+                            <a
+                                class="uji-button uji-button--secondary"
+                                href="../"
+                            >
+                                Explore BahasaBahasa
+                            </a>
+                        </div>
+                    </section>
+
+                </div>
+            </div>
+        </section>
+
+
+        <!-- =========================================
+             SCIENTIFIC DISCLOSURE
+        ========================================== -->
+
+        <section
+            id="about-result"
+            class="uji-about"
+            aria-labelledby="about-result-title"
+        >
+            <div class="uji-container">
+
+                <p class="uji-eyebrow">
+                    About this pilot
+                </p>
+
+                <h2 id="about-result-title">
+                    What your result means
+                </h2>
+
+                <p>
+                    Your learning profile is based on your responses during
+                    this practice session. The current pilot uses rule-based
+                    adaptive practice and an original "bahasabahasa" item bank.
+                </p>
+
+                <p>
+                    It does not predict an official UKBI score, CEFR level,
+                    certification outcome, or overall language proficiency.
+                </p>
+
+                <p>
+                    "bahasabahasa" treats these results as learning signals:
+                    evidence that can help identify what you may want to
+                    practice next.
+                </p>
+
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="uji-footer">
+        <div class="uji-container">
+        <p class="uji-footer__copyright">
+            © 2026 "bahasabahasa"
+        </p>
+
+        <p class="uji-footer__tagline">
+            Indonesia's Language Infrastructure for Humans and AI.
+        </p>
+    </div>
+</footer>
+
+</body>
+</html>

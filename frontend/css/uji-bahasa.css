@@ -1,0 +1,348 @@
+/* =========================================
+   UJI BAHASA PLAYGROUND
+   Application Foundation
+========================================= */
+
+.uji-page {
+    min-height: 100vh;
+}
+
+/* =========================================
+   ACCESSIBILITY
+========================================= */
+
+.skip-link {
+    position: absolute;
+    top: 0;
+    left: 1rem;
+    z-index: 1000;
+
+    padding: 0.75rem 1rem;
+
+    background: #ffffff;
+    color: #111111;
+
+    transform: translateY(-150%);
+    transition: transform 0.2s ease;
+}
+
+.skip-link:focus {
+    transform: translateY(0);
+}
+
+.uji-container {
+    width: min(100% - 2rem, 1120px);
+    margin-inline: auto;
+}
+
+.uji-header {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+.uji-header__inner {
+    min-height: 72px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.uji-header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+
+    border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+    background: rgba(247, 248, 246, 0.92);
+    backdrop-filter: blur(14px);
+}
+
+.uji-assessment__header {
+    position: static;
+    top: auto;
+    z-index: auto;
+
+    border-bottom: 0;
+    background: transparent;
+    backdrop-filter: none;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 2rem;
+}
+
+.uji-brand,
+.uji-header__back {
+    color: inherit;
+}
+
+.uji-brand {
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
+}
+
+.uji-brand__logo {
+    display: block;
+    width: min(220px, 52vw);
+    height: auto;
+}
+
+.uji-app {
+    padding-block: clamp(3rem, 8vw, 7rem);
+}
+
+.uji-app__shell {
+    width: min(100%, 820px);
+    margin-inline: auto;
+}
+
+.uji-screen[hidden] {
+    display: none;
+}
+
+.uji-eyebrow,
+.uji-step {
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.uji-lead {
+    max-width: 680px;
+    font-size: clamp(1.1rem, 2vw, 1.35rem);
+    line-height: 1.6;
+}
+
+.uji-notice {
+    margin-block: 2rem;
+    padding: 1.25rem;
+    border: 1px solid currentColor;
+    border-radius: 1rem;
+}
+
+.uji-notice p:last-child {
+    margin-bottom: 0;
+}
+
+.uji-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 2rem;
+}
+
+.uji-button {
+    min-height: 48px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.75rem 1.25rem;
+    border: 1px solid currentColor;
+    border-radius: 999px;
+    font: inherit;
+    font-weight: 700;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.uji-choice-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.uji-choice {
+    min-height: 160px;
+    padding: 1.5rem;
+    border: 1px solid currentColor;
+    border-radius: 1rem;
+    background: transparent;
+    color: inherit;
+    text-align: left;
+    cursor: pointer;
+}
+
+.uji-choice strong,
+.uji-choice span {
+    display: block;
+}
+
+.uji-choice span {
+    margin-top: 0.75rem;
+    line-height: 1.5;
+}
+
+.uji-assessment-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 2rem;
+}
+
+.uji-assessment-content {
+    margin-top: 2rem;
+}
+
+/* Assessment Runtime */
+
+.uji-assessment__actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 1.5rem;
+}
+
+#assessment-continue:disabled {
+    cursor: not-allowed;
+    opacity: 0.55;
+}
+
+.uji-about {
+    padding-block: 4rem;
+    border-top: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+.uji-about .uji-container {
+    width: min(100% - 2rem, 820px);
+}
+
+/* Reading Stimulus */
+
+.uji-stimulus__title {
+    margin: 0 0 0.75rem;
+    font-size: 1rem;
+    line-height: 1.4;
+}
+
+.uji-stimulus__content {
+    margin: 0;
+    line-height: 1.7;
+}
+
+/* Listening Audio */
+
+.uji-audio {
+    margin-top: 1.5rem;
+    padding: 1rem;
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    border-radius: 0.75rem;
+}
+
+.uji-audio[hidden] {
+    display: none;
+}
+
+.uji-audio__label {
+    margin: 0 0 0.75rem;
+    font-weight: 700;
+}
+
+.uji-audio audio {
+    display: block;
+    width: 100%;
+}
+
+.uji-audio__status {
+    margin: 0.75rem 0 0;
+    line-height: 1.5;
+}
+
+/* ========================================
+   Learning Profile
+   ======================================== */
+
+.uji-profile__skills {
+    display: grid;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.uji-profile__card {
+    padding: 1.25rem;
+    border: 1px solid var(--uji-border, #d8d8d8);
+    border-radius: 0.75rem;
+}
+
+.uji-profile__card h3 {
+    margin-top: 0;
+}
+
+.uji-profile__signal {
+    font-weight: 700;
+}
+
+.uji-profile__recommendation {
+    margin-bottom: 0;
+}
+
+/* =========================================================
+   Runtime Visibility Contract
+   ========================================================= */
+
+[hidden] {
+    display: none !important;
+}
+
+/* =========================================
+   FOOTER
+========================================= */
+
+.uji-footer {
+    padding-block: 2rem;
+    border-top: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+.uji-footer .uji-container {
+    display: block;
+}
+
+.uji-footer__copyright,
+.uji-footer__tagline {
+    margin: 0;
+}
+
+.uji-footer__copyright {
+    font-weight: 700;
+}
+
+.uji-footer__tagline {
+    margin-top: 0.35rem;
+}
+
+@media (max-width: 640px) {
+    .uji-choice-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .uji-assessment-header {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+}
+
+/* =========================================
+   FOOTER — FINAL ALIGNMENT OVERRIDE
+========================================= */
+
+.uji-footer .uji-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 0.35rem;
+}
+
+.uji-footer__copyright,
+.uji-footer__tagline {
+    margin: 0;
+}
+
+.uji-footer__copyright {
+    font-weight: 700;
+}
+
+.uji-footer__tagline {
+    text-align: left;
+}

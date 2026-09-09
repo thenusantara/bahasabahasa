@@ -1,0 +1,527 @@
+{
+    "schemaVersion": "0.1.0",
+    "datasetVersion": "0.1.0",
+    "language": "id",
+    "skill": "reading",
+    "status": "pilot",
+    "answerIndexBase": 0,
+    "title": "Bahasa Indonesia Reading Pilot Item Bank",
+    "description": "Original BahasaBahasa reading items for the Uji Bahasa Indonesia Playground pilot.",
+    "difficultyScale": {
+        "1": "foundation",
+        "2": "developing",
+        "3": "stronger"
+    },
+    "constructs": [
+        "explicit_information",
+        "main_idea",
+        "contextual_meaning",
+        "inference",
+        "procedural_comprehension"
+    ],
+    "provenance": {
+        "type": "original",
+        "creator": "BahasaBahasa",
+        "created": "2026",
+        "sourceMaterial": null
+    },
+    "stimuli": [
+        {
+            "id": "READ-ID-F-STIM-001",
+            "version": "1.0",
+            "language": "id",
+            "domain": "general",
+            "difficulty": 1,
+            "title": "Pengumuman Perpustakaan",
+            "content": "Perpustakaan akan menutup lantai dua pada hari Selasa karena ada perbaikan lampu. Selama penutupan, peminjaman dan pengembalian buku tetap dilayani di lantai satu. Lantai dua akan dibuka kembali seperti biasa pada hari Rabu.",
+            "provenance": {
+                "type": "original",
+                "creator": "BahasaBahasa",
+                "created": "2026",
+                "sourceMaterial": null
+            }
+        },
+        {
+            "id": "READ-ID-D-STIM-001",
+            "version": "1.0",
+            "language": "id",
+            "domain": "workplace",
+            "difficulty": 2,
+            "title": "Perubahan Jadwal Rapat Produksi",
+            "content": "Rapat evaluasi produksi yang semula dijadwalkan pukul 09.00 dipindahkan menjadi pukul 11.00. Perubahan dilakukan karena laporan pemeriksaan mesin baru akan selesai pada pukul 10.00. Para kepala bagian diminta membaca laporan tersebut sebelum rapat dimulai. Ruang rapat tidak berubah.",
+            "provenance": {
+                "type": "original",
+                "creator": "BahasaBahasa",
+                "created": "2026",
+                "sourceMaterial": null
+            }
+        },
+        {
+            "id": "READ-ID-S-STIM-001",
+            "version": "1.0",
+            "language": "id",
+            "domain": "workplace",
+            "difficulty": 3,
+            "title": "Pemeriksaan Barang Masuk secara Digital",
+            "content": "Perusahaan mulai menggunakan pencatatan digital untuk pemeriksaan barang masuk. Sistem ini tidak menggantikan pemeriksaan fisik, tetapi digunakan untuk melengkapi pencatatan hasil pemeriksaan. Selama dua minggu pertama, formulir kertas tetap digunakan sebagai cadangan. Setelah masa peralihan selesai, seluruh hasil pemeriksaan akan dicatat melalui sistem digital. Supervisor diminta segera melaporkan kendala yang muncul selama penerapan sistem baru.",
+            "provenance": {
+                "type": "original",
+                "creator": "BahasaBahasa",
+                "created": "2026",
+                "sourceMaterial": null
+            }
+        }
+    ],
+    "items": [
+        {
+            "id": "READ-ID-F-001",
+            "version": "1.0",
+            "language": "id",
+            "skill": "reading",
+            "domain": "general",
+            "difficulty": 1,
+            "construct": "explicit_information",
+            "stimulusId": "READ-ID-F-STIM-001",
+            "question": "Pada hari apa lantai dua perpustakaan ditutup?",
+            "options": [
+                "Senin",
+                "Selasa",
+                "Rabu",
+                "Kamis"
+            ],
+            "correctAnswer": 1,
+            "feedback": {
+                "correct": "Benar. Lantai dua ditutup pada hari Selasa.",
+                "incorrect": "Periksa kembali kalimat pertama pada pengumuman untuk menemukan hari penutupan.",
+                "practiceNext": "Latih kemampuan menemukan informasi yang dinyatakan secara langsung dalam teks."
+            },
+            "provenance": {
+                "type": "original",
+                "creator": "BahasaBahasa",
+                "created": "2026",
+                "sourceMaterial": null
+            },
+            "status": "pilot"
+        },
+        {
+            "id": "READ-ID-F-002",
+            "version": "1.0",
+            "language": "id",
+            "skill": "reading",
+            "domain": "general",
+            "difficulty": 1,
+            "construct": "procedural_comprehension",
+            "stimulusId": "READ-ID-F-STIM-001",
+            "question": "Di mana pengunjung dapat meminjam atau mengembalikan buku selama lantai dua ditutup?",
+            "options": [
+                "Di lantai satu",
+                "Di lantai dua",
+                "Di halaman perpustakaan",
+                "Di ruang administrasi"
+            ],
+            "correctAnswer": 0,
+            "feedback": {
+                "correct": "Benar. Layanan peminjaman dan pengembalian tetap tersedia di lantai satu.",
+                "incorrect": "Cari bagian teks yang menjelaskan layanan yang tetap tersedia selama penutupan.",
+                "practiceNext": "Latih membaca petunjuk dan tindakan yang harus dilakukan dalam pengumuman."
+            },
+            "provenance": {
+                "type": "original",
+                "creator": "BahasaBahasa",
+                "created": "2026",
+                "sourceMaterial": null
+            },
+            "status": "pilot"
+        },
+        {
+            "id": "READ-ID-F-003",
+            "version": "1.0",
+            "language": "id",
+            "skill": "reading",
+            "domain": "general",
+            "difficulty": 1,
+            "construct": "contextual_meaning",
+            "stimulusId": "READ-ID-F-STIM-001",
+            "question": "Apa makna kata \"penutupan\" dalam konteks pengumuman tersebut?",
+            "options": [
+                "Penghentian penggunaan untuk sementara",
+                "Pemindahan perpustakaan ke gedung lain",
+                "Penghapusan seluruh layanan perpustakaan",
+                "Perubahan jam kerja pegawai"
+            ],
+            "correctAnswer": 0,
+            "feedback": {
+                "correct": "Benar. Dalam konteks ini, penutupan berarti lantai dua tidak digunakan untuk sementara.",
+                "incorrect": "Gunakan informasi bahwa lantai dua akan kembali dibuka pada hari Rabu untuk memahami maknanya.",
+                "practiceNext": "Latih menafsirkan arti kata berdasarkan konteks kalimat di sekitarnya."
+            },
+            "provenance": {
+                "type": "original",
+                "creator": "BahasaBahasa",
+                "created": "2026",
+                "sourceMaterial": null
+            },
+            "status": "pilot"
+        },
+        {
+            "id": "READ-ID-F-004",
+            "version": "1.0",
+            "language": "id",
+            "skill": "reading",
+            "domain": "general",
+            "difficulty": 1,
+            "construct": "main_idea",
+            "stimulusId": "READ-ID-F-STIM-001",
+            "question": "Apa informasi utama dalam pengumuman tersebut?",
+            "options": [
+                "Perpustakaan akan menambah koleksi buku baru",
+                "Lantai dua ditutup sementara tetapi layanan tertentu tetap tersedia",
+                "Seluruh perpustakaan ditutup sampai hari Rabu",
+                "Pengunjung harus mengembalikan semua buku pada hari Selasa"
+            ],
+            "correctAnswer": 1,
+            "feedback": {
+                "correct": "Benar. Pengumuman menjelaskan penutupan sementara lantai dua dan kelanjutan layanan di lantai satu.",
+                "incorrect": "Pilih jawaban yang merangkum keseluruhan pengumuman, bukan satu detail saja.",
+                "practiceNext": "Latih menemukan gagasan utama dari beberapa informasi pendukung."
+            },
+            "provenance": {
+                "type": "original",
+                "creator": "BahasaBahasa",
+                "created": "2026",
+                "sourceMaterial": null
+            },
+            "status": "pilot"
+        },
+        {
+            "id": "READ-ID-F-005",
+            "version": "1.0",
+            "language": "id",
+            "skill": "reading",
+            "domain": "general",
+            "difficulty": 1,
+            "construct": "explicit_information",
+            "stimulusId": "READ-ID-F-STIM-001",
+            "question": "Kapan lantai dua akan kembali dibuka seperti biasa?",
+            "options": [
+                "Senin",
+                "Selasa",
+                "Rabu",
+                "Jumat"
+            ],
+            "correctAnswer": 2,
+            "feedback": {
+                "correct": "Benar. Lantai dua akan kembali dibuka pada hari Rabu.",
+                "incorrect": "Informasi ini terdapat pada kalimat terakhir pengumuman.",
+                "practiceNext": "Latih menemukan informasi waktu yang disebutkan langsung dalam teks."
+            },
+            "provenance": {
+                "type": "original",
+                "creator": "BahasaBahasa",
+                "created": "2026",
+                "sourceMaterial": null
+            },
+            "status": "pilot"
+        },
+        {
+            "id": "READ-ID-D-001",
+            "version": "1.0",
+            "language": "id",
+            "skill": "reading",
+            "domain": "workplace",
+            "difficulty": 2,
+            "construct": "explicit_information",
+            "stimulusId": "READ-ID-D-STIM-001",
+            "question": "Pukul berapa rapat evaluasi produksi akan dimulai setelah jadwal diubah?",
+            "options": [
+                "09.00",
+                "10.00",
+                "11.00",
+                "12.00"
+            ],
+            "correctAnswer": 2,
+            "feedback": {
+                "correct": "Benar. Jadwal rapat dipindahkan menjadi pukul 11.00.",
+                "incorrect": "Bedakan antara waktu selesainya laporan dan waktu dimulainya rapat.",
+                "practiceNext": "Latih membedakan beberapa informasi waktu dalam satu teks."
+            },
+            "provenance": {
+                "type": "original",
+                "creator": "BahasaBahasa",
+                "created": "2026",
+                "sourceMaterial": null
+            },
+            "status": "pilot"
+        },
+        {
+            "id": "READ-ID-D-002",
+            "version": "1.0",
+            "language": "id",
+            "skill": "reading",
+            "domain": "workplace",
+            "difficulty": 2,
+            "construct": "explicit_information",
+            "stimulusId": "READ-ID-D-STIM-001",
+            "question": "Mengapa jadwal rapat diubah?",
+            "options": [
+                "Ruang rapat sedang digunakan",
+                "Laporan pemeriksaan mesin baru selesai pukul 10.00",
+                "Kepala bagian tidak dapat hadir pagi hari",
+                "Produksi dihentikan sampai siang"
+            ],
+            "correctAnswer": 1,
+            "feedback": {
+                "correct": "Benar. Perubahan dilakukan karena laporan pemeriksaan mesin baru selesai pukul 10.00.",
+                "incorrect": "Cari hubungan sebab yang dinyatakan setelah informasi perubahan jadwal.",
+                "practiceNext": "Latih mengenali alasan yang dinyatakan secara eksplisit."
+            },
+            "provenance": {
+                "type": "original",
+                "creator": "BahasaBahasa",
+                "created": "2026",
+                "sourceMaterial": null
+            },
+            "status": "pilot"
+        },
+        {
+            "id": "READ-ID-D-003",
+            "version": "1.0",
+            "language": "id",
+            "skill": "reading",
+            "domain": "workplace",
+            "difficulty": 2,
+            "construct": "inference",
+            "stimulusId": "READ-ID-D-STIM-001",
+            "question": "Mengapa kepala bagian diminta membaca laporan sebelum rapat?",
+            "options": [
+                "Agar mereka dapat membahas hasil pemeriksaan dengan informasi yang sudah tersedia",
+                "Agar mereka dapat mengganti teknisi yang membuat laporan",
+                "Agar rapat dapat dipindahkan kembali ke pukul 09.00",
+                "Agar ruang rapat dapat digunakan untuk pemeriksaan mesin"
+            ],
+            "correctAnswer": 0,
+            "feedback": {
+                "correct": "Benar. Membaca laporan terlebih dahulu membantu peserta memahami informasi yang akan dibahas.",
+                "incorrect": "Jawabannya tidak tertulis secara langsung. Hubungkan tujuan laporan dengan rapat evaluasi.",
+                "practiceNext": "Latih membuat inferensi berdasarkan hubungan antara beberapa informasi dalam teks."
+            },
+            "provenance": {
+                "type": "original",
+                "creator": "BahasaBahasa",
+                "created": "2026",
+                "sourceMaterial": null
+            },
+            "status": "pilot"
+        },
+        {
+            "id": "READ-ID-D-004",
+            "version": "1.0",
+            "language": "id",
+            "skill": "reading",
+            "domain": "workplace",
+            "difficulty": 2,
+            "construct": "procedural_comprehension",
+            "stimulusId": "READ-ID-D-STIM-001",
+            "question": "Apa yang harus dilakukan kepala bagian sebelum menghadiri rapat?",
+            "options": [
+                "Memeriksa mesin secara langsung",
+                "Mengubah jadwal produksi",
+                "Membaca laporan pemeriksaan mesin",
+                "Memindahkan ruang rapat"
+            ],
+            "correctAnswer": 2,
+            "feedback": {
+                "correct": "Benar. Kepala bagian diminta membaca laporan sebelum rapat.",
+                "incorrect": "Cari tindakan yang secara khusus diminta kepada para kepala bagian.",
+                "practiceNext": "Latih mengenali instruksi atau tindakan yang harus dilakukan berdasarkan teks."
+            },
+            "provenance": {
+                "type": "original",
+                "creator": "BahasaBahasa",
+                "created": "2026",
+                "sourceMaterial": null
+            },
+            "status": "pilot"
+        },
+        {
+            "id": "READ-ID-D-005",
+            "version": "1.0",
+            "language": "id",
+            "skill": "reading",
+            "domain": "workplace",
+            "difficulty": 2,
+            "construct": "explicit_information",
+            "stimulusId": "READ-ID-D-STIM-001",
+            "question": "Apa yang tidak berubah setelah perubahan jadwal rapat?",
+            "options": [
+                "Waktu rapat",
+                "Ruang rapat",
+                "Waktu selesainya laporan",
+                "Daftar kepala bagian"
+            ],
+            "correctAnswer": 1,
+            "feedback": {
+                "correct": "Benar. Teks menyatakan bahwa ruang rapat tidak berubah.",
+                "incorrect": "Periksa kalimat terakhir pada teks.",
+                "practiceNext": "Latih membedakan informasi yang berubah dan informasi yang tetap."
+            },
+            "provenance": {
+                "type": "original",
+                "creator": "BahasaBahasa",
+                "created": "2026",
+                "sourceMaterial": null
+            },
+            "status": "pilot"
+        },
+        {
+            "id": "READ-ID-S-001",
+            "version": "1.0",
+            "language": "id",
+            "skill": "reading",
+            "domain": "workplace",
+            "difficulty": 3,
+            "construct": "main_idea",
+            "stimulusId": "READ-ID-S-STIM-001",
+            "question": "Apa gagasan utama teks tersebut?",
+            "options": [
+                "Perusahaan menghentikan seluruh pemeriksaan fisik barang masuk",
+                "Perusahaan menerapkan pencatatan digital secara bertahap sebagai bagian dari pemeriksaan barang masuk",
+                "Supervisor menggantikan petugas pemeriksaan barang masuk",
+                "Formulir kertas menjadi sistem utama perusahaan"
+            ],
+            "correctAnswer": 1,
+            "feedback": {
+                "correct": "Benar. Teks menjelaskan penerapan bertahap pencatatan digital yang melengkapi pemeriksaan fisik.",
+                "incorrect": "Pilih jawaban yang mencakup tujuan sistem digital sekaligus proses penerapannya.",
+                "practiceNext": "Latih merangkum ide utama dari teks prosedural yang memiliki beberapa tahap."
+            },
+            "provenance": {
+                "type": "original",
+                "creator": "BahasaBahasa",
+                "created": "2026",
+                "sourceMaterial": null
+            },
+            "status": "pilot"
+        },
+        {
+            "id": "READ-ID-S-002",
+            "version": "1.0",
+            "language": "id",
+            "skill": "reading",
+            "domain": "workplace",
+            "difficulty": 3,
+            "construct": "inference",
+            "stimulusId": "READ-ID-S-STIM-001",
+            "question": "Mengapa formulir kertas masih digunakan selama dua minggu pertama?",
+            "options": [
+                "Karena perusahaan membatalkan sistem digital",
+                "Karena formulir kertas digunakan sebagai cadangan selama masa peralihan",
+                "Karena pemeriksaan fisik tidak boleh dilakukan",
+                "Karena supervisor belum diperbolehkan menggunakan sistem digital"
+            ],
+            "correctAnswer": 1,
+            "feedback": {
+                "correct": "Benar. Formulir kertas berfungsi sebagai cadangan selama proses transisi.",
+                "incorrect": "Perhatikan hubungan antara istilah \"masa peralihan\" dan penggunaan formulir kertas.",
+                "practiceNext": "Latih memahami alasan di balik tahapan penerapan suatu prosedur."
+            },
+            "provenance": {
+                "type": "original",
+                "creator": "BahasaBahasa",
+                "created": "2026",
+                "sourceMaterial": null
+            },
+            "status": "pilot"
+        },
+        {
+            "id": "READ-ID-S-003",
+            "version": "1.0",
+            "language": "id",
+            "skill": "reading",
+            "domain": "workplace",
+            "difficulty": 3,
+            "construct": "contextual_meaning",
+            "stimulusId": "READ-ID-S-STIM-001",
+            "question": "Apa makna kata \"cadangan\" dalam konteks penggunaan formulir kertas?",
+            "options": [
+                "Dokumen yang digunakan sebagai pilihan pengganti jika diperlukan",
+                "Dokumen yang harus dimusnahkan setelah pemeriksaan",
+                "Catatan yang hanya boleh digunakan supervisor",
+                "Formulir utama yang menggantikan sistem digital"
+            ],
+            "correctAnswer": 0,
+            "feedback": {
+                "correct": "Benar. Dalam konteks ini, cadangan berarti pilihan pengganti ketika dibutuhkan selama masa transisi.",
+                "incorrect": "Perhatikan bahwa sistem digital sedang diperkenalkan sementara formulir kertas masih dipertahankan untuk sementara.",
+                "practiceNext": "Latih memahami makna istilah berdasarkan fungsi yang dijelaskan dalam teks."
+            },
+            "provenance": {
+                "type": "original",
+                "creator": "BahasaBahasa",
+                "created": "2026",
+                "sourceMaterial": null
+            },
+            "status": "pilot"
+        },
+        {
+            "id": "READ-ID-S-004",
+            "version": "1.0",
+            "language": "id",
+            "skill": "reading",
+            "domain": "workplace",
+            "difficulty": 3,
+            "construct": "procedural_comprehension",
+            "stimulusId": "READ-ID-S-STIM-001",
+            "question": "Apa yang harus dilakukan supervisor jika muncul masalah selama penerapan sistem baru?",
+            "options": [
+                "Menghentikan seluruh pemeriksaan barang masuk",
+                "Kembali menggunakan formulir kertas secara permanen",
+                "Segera melaporkan kendala yang muncul",
+                "Menghapus hasil pemeriksaan digital"
+            ],
+            "correctAnswer": 2,
+            "feedback": {
+                "correct": "Benar. Supervisor diminta segera melaporkan kendala yang muncul.",
+                "incorrect": "Cari instruksi khusus yang ditujukan kepada supervisor.",
+                "practiceNext": "Latih mengidentifikasi tanggung jawab pihak tertentu dalam teks prosedural."
+            },
+            "provenance": {
+                "type": "original",
+                "creator": "BahasaBahasa",
+                "created": "2026",
+                "sourceMaterial": null
+            },
+            "status": "pilot"
+        },
+        {
+            "id": "READ-ID-S-005",
+            "version": "1.0",
+            "language": "id",
+            "skill": "reading",
+            "domain": "workplace",
+            "difficulty": 3,
+            "construct": "inference",
+            "stimulusId": "READ-ID-S-STIM-001",
+            "question": "Pernyataan mana yang paling tepat tentang hubungan sistem digital dan pemeriksaan fisik?",
+            "options": [
+                "Sistem digital menggantikan pemeriksaan fisik sepenuhnya",
+                "Pemeriksaan fisik hanya dilakukan selama dua minggu pertama",
+                "Sistem digital mencatat hasil, sementara pemeriksaan fisik tetap dilakukan",
+                "Pemeriksaan fisik dilakukan hanya jika sistem digital mengalami masalah"
+            ],
+            "correctAnswer": 2,
+            "feedback": {
+                "correct": "Benar. Sistem digital digunakan untuk pencatatan hasil dan tidak menggantikan pemeriksaan fisik.",
+                "incorrect": "Perhatikan kalimat yang secara langsung membedakan fungsi sistem digital dari pemeriksaan fisik.",
+                "practiceNext": "Latih menghubungkan fungsi dua proses yang berjalan bersama dalam sebuah prosedur."
+            },
+            "provenance": {
+                "type": "original",
+                "creator": "BahasaBahasa",
+                "created": "2026",
+                "sourceMaterial": null
+            },
+            "status": "pilot"
+        }
+    ]
+}

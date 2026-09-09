@@ -1,0 +1,124 @@
+{
+    "schemaVersion": "0.1.0",
+    "datasetVersion": "0.1.0",
+    "language": "id",
+    "skill": "speaking",
+    "status": "pilot",
+    "title": "Bahasa Indonesia Speaking Pilot Task Bank",
+    "description": "Original BahasaBahasa speaking practice tasks for the Uji Bahasa Indonesia Playground pilot.",
+    "constructs": [
+        "topic_response",
+        "organization",
+        "clarity",
+        "detail",
+        "communicative_effectiveness"
+    ],
+
+"provenance": {
+    "type": "original",
+    "creator": "BahasaBahasa",
+    "created": "2026",
+    "sourceMaterial": null
+},
+    "selfReflection": {
+    "type": "checklist",
+    "scored": false,
+    "title": "Refleksi Latihan Berbicara",
+    "instruction": "Dengarkan kembali rekaman Anda jika tersedia, lalu refleksikan bagaimana Anda menyampaikan jawaban.",
+    "items": [
+        {
+            "id": "SPEAK-REFLECT-001",
+            "construct": "topic_response",
+            "label": "Topik",
+            "prompt": "Apakah saya menjawab topik yang diminta?"
+        },
+        {
+            "id": "SPEAK-REFLECT-002",
+            "construct": "organization",
+            "label": "Organisasi",
+            "prompt": "Apakah penjelasan saya tersusun dengan jelas?"
+        },
+        {
+            "id": "SPEAK-REFLECT-003",
+            "construct": "detail",
+            "label": "Detail",
+            "prompt": "Apakah saya memberikan detail yang cukup?"
+        },
+        {
+            "id": "SPEAK-REFLECT-004",
+            "construct": "clarity",
+            "label": "Kejelasan",
+            "prompt": "Apakah ucapan saya dapat dipahami?"
+        }
+    ]
+},
+
+    "privacy": {
+    "recordingLocation": "browser-local",
+    "uploaded": false,
+    "persisted": false,
+    "serverStorage": false,
+    "machineProcessing": false,
+    "userControls": [
+        "playback",
+        "retry",
+        "discard"
+    ],
+    "notice": "Your practice recording stays in your browser and is not uploaded to BahasaBahasa. You can listen to it, retry the task, or discard it."
+},
+
+    "tasks": [
+        {
+            "id": "SPEAK-ID-GEN-001",
+            "version": "1.0",
+            "language": "id",
+            "skill": "speaking",
+            "domain": "general",
+            "difficulty": 2,
+            "title": "Membantu Teman Tinggal di Indonesia",
+            "prompt": "Seorang teman dari luar Indonesia akan tinggal di Indonesia selama satu bulan. Jelaskan tiga hal yang menurut Anda perlu ia ketahui agar kehidupan sehari-harinya lebih mudah. Anda dapat membahas transportasi, makanan, komunikasi, kebiasaan sehari-hari, atau hal lain yang menurut Anda penting.",
+            "preparationSeconds": 30,
+            "speakingSeconds": 90,
+            "assessment": "self-reflection",
+            "machineScored": false,
+            "recording": {
+                "required": false,
+                "storage": "browser-local",
+                "upload": false
+            },
+            "provenance": {
+                "type": "original",
+                "creator": "BahasaBahasa",
+                "created": "2026",
+                "sourceMaterial": null
+            },
+            "status": "pilot"
+        },
+        {
+            "id": "SPEAK-ID-WRK-001",
+            "version": "1.0",
+            "language": "id",
+            "skill": "speaking",
+            "domain": "workplace",
+            "difficulty": 2,
+            "title": "Menjelaskan Keterlambatan kepada Supervisor",
+            "prompt": "Sebuah pekerjaan yang menjadi tanggung jawab Anda mengalami keterlambatan. Jelaskan situasinya kepada supervisor Anda. Sampaikan penyebab keterlambatan, kondisi pekerjaan saat ini, dan rencana Anda untuk menyelesaikannya.",
+            "preparationSeconds": 30,
+            "speakingSeconds": 90,
+            "assessment": "self-reflection",
+            "machineScored": false,
+            "recording": {
+                "required": false,
+                "storage": "browser-local",
+                "upload": false
+            },
+            "provenance": {
+                "type": "original",
+                "creator": "BahasaBahasa",
+                "created": "2026",
+                "sourceMaterial": null
+            },
+            "status": "pilot"
+        }
+    ]
+}

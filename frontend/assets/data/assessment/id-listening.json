@@ -1,0 +1,562 @@
+{
+    "schemaVersion": "0.1.0",
+    "datasetVersion": "0.1.0",
+    "language": "id",
+    "skill": "listening",
+    "status": "pilot",
+    "answerIndexBase": 0,
+    "title": "Bahasa Indonesia Listening Pilot Item Bank",
+    "description": "Original BahasaBahasa listening items for the Uji Bahasa Indonesia Playground pilot.",
+    "difficultyScale": {
+        "1": "foundation",
+        "2": "developing",
+        "3": "stronger"
+    },
+    "constructs": [
+        "explicit_information",
+        "main_idea",
+        "contextual_meaning",
+        "speaker_intention",
+        "instruction_comprehension"
+    ],
+    "provenance": {
+        "type": "original",
+        "creator": "BahasaBahasa",
+        "created": "2026",
+        "sourceMaterial": null
+    },
+    "stimuli": [
+        {
+            "id": "LISTEN-ID-F-STIM-001",
+            "version": "1.0",
+            "language": "id",
+            "domain": "general",
+            "difficulty": 1,
+            "type": "announcement",
+            "title": "Pengumuman Keberangkatan Bus",
+            "script": "Perhatian. Bus menuju pusat kota akan berangkat pukul sepuluh lewat lima belas menit dari pintu tiga. Penumpang diminta berada di pintu keberangkatan sepuluh menit sebelumnya.",
+            "audio": {
+            "src": "../assets/audio/uji-bahasa/listening-foundation-v01.mp3",
+            "status": "ready",
+            "sameOrigin": true,
+            "productionMethod": "ai-generated-voice",
+            "humanReviewed": true,
+            "reviewStatus": "accepted",
+            "assessmentUse": "pilot"
+            },
+
+            "provenance": {
+                "type": "original",
+                "creator": "BahasaBahasa",
+                "created": "2026",
+                "sourceMaterial": null
+            }
+        },
+        {
+            "id": "LISTEN-ID-D-STIM-001",
+            "version": "1.0",
+            "language": "id",
+            "domain": "workplace",
+            "difficulty": 2,
+            "type": "dialogue",
+            "title": "Pengiriman Pesanan Surabaya",
+            "script": "Rina: Pesanan untuk Surabaya sudah dikirim pagi ini? Arif: Belum. Tadi gudang menemukan dua kotak dengan label yang salah. Pesanannya tidak dibatalkan. Kami akan memeriksa ulang labelnya, lalu mengirimkannya setelah makan siang. Pelanggan juga sudah diberi tahu tentang keterlambatan ini.",
+
+            "audio": {
+            "src": "../assets/audio/uji-bahasa/listening-developing-v01.mp3",
+            "status": "ready",
+            "sameOrigin": true,
+            "productionMethod": "ai-generated-voice",
+            "humanReviewed": true,
+            "reviewStatus": "accepted",
+            "assessmentUse": "pilot"
+            },
+
+            "provenance": {
+                "type": "original",
+                "creator": "BahasaBahasa",
+                "created": "2026",
+                "sourceMaterial": null
+            }
+        },
+        {
+            "id": "LISTEN-ID-S-STIM-001",
+            "version": "1.0",
+            "language": "id",
+            "domain": "workplace",
+            "difficulty": 3,
+            "type": "instruction",
+            "title": "Pelaporan Kerusakan Peralatan",
+            "script": "Mulai minggu depan, setiap pekerja yang menemukan kerusakan peralatan harus mencatatnya melalui formulir digital sebelum menghubungi teknisi. Jika kerusakan dapat membahayakan pekerja, mesin harus dihentikan terlebih dahulu dan supervisor segera diberi tahu. Formulir digital tetap harus dilengkapi setelah kondisi aman. Prosedur ini dibuat agar tindakan darurat tidak tertunda hanya karena proses administrasi.",
+            "audio": {
+            "src": "../assets/audio/uji-bahasa/listening-stronger-v01.mp3",
+            "status": "ready",
+            "sameOrigin": true,
+            "productionMethod": "ai-generated-voice",
+            "humanReviewed": true,
+            "reviewStatus": "accepted",
+            "assessmentUse": "pilot"
+            },
+
+            "provenance": {
+                "type": "original",
+                "creator": "BahasaBahasa",
+                "created": "2026",
+                "sourceMaterial": null
+            }
+        }
+    ],
+    "items": [
+        {
+            "id": "LISTEN-ID-F-001",
+            "version": "1.0",
+            "language": "id",
+            "skill": "listening",
+            "domain": "general",
+            "difficulty": 1,
+            "construct": "explicit_information",
+            "stimulusId": "LISTEN-ID-F-STIM-001",
+            "question": "Pukul berapa bus akan berangkat?",
+            "options": [
+                "09.45",
+                "10.00",
+                "10.15",
+                "10.30"
+            ],
+            "correctAnswer": 2,
+            "feedback": {
+                "correct": "Benar. Bus akan berangkat pukul 10.15.",
+                "incorrect": "Dengarkan kembali bagian yang menyebutkan waktu keberangkatan.",
+                "practiceNext": "Latih menangkap informasi waktu yang disebutkan secara langsung."
+            },
+            "provenance": {
+                "type": "original",
+                "creator": "BahasaBahasa",
+                "created": "2026",
+                "sourceMaterial": null
+            },
+            "status": "pilot"
+        },
+        {
+            "id": "LISTEN-ID-F-002",
+            "version": "1.0",
+            "language": "id",
+            "skill": "listening",
+            "domain": "general",
+            "difficulty": 1,
+            "construct": "explicit_information",
+            "stimulusId": "LISTEN-ID-F-STIM-001",
+            "question": "Dari pintu berapa bus akan berangkat?",
+            "options": [
+                "Pintu satu",
+                "Pintu dua",
+                "Pintu tiga",
+                "Pintu empat"
+            ],
+            "correctAnswer": 2,
+            "feedback": {
+                "correct": "Benar. Bus akan berangkat dari pintu tiga.",
+                "incorrect": "Dengarkan bagian setelah informasi waktu keberangkatan.",
+                "practiceNext": "Latih menangkap informasi lokasi yang disebutkan secara langsung."
+            },
+            "provenance": {
+                "type": "original",
+                "creator": "BahasaBahasa",
+                "created": "2026",
+                "sourceMaterial": null
+            },
+            "status": "pilot"
+        },
+        {
+            "id": "LISTEN-ID-F-003",
+            "version": "1.0",
+            "language": "id",
+            "skill": "listening",
+            "domain": "general",
+            "difficulty": 1,
+            "construct": "instruction_comprehension",
+            "secondaryDemand": "basic_time_calculation",
+            "stimulusId": "LISTEN-ID-F-STIM-001",
+            "question": "Pukul berapa penumpang diminta sudah berada di pintu keberangkatan?",
+            "options": [
+                "09.55",
+                "10.05",
+                "10.15",
+                "10.25"
+            ],
+            "correctAnswer": 1,
+            "feedback": {
+                "correct": "Benar. Sepuluh menit sebelum keberangkatan pukul 10.15 adalah pukul 10.05.",
+                "incorrect": "Gunakan waktu keberangkatan dan informasi bahwa penumpang harus berada di pintu sepuluh menit sebelumnya.",
+                "practiceNext": "Latih mengikuti instruksi waktu sederhana dalam pengumuman lisan."
+            },
+            "provenance": {
+                "type": "original",
+                "creator": "BahasaBahasa",
+                "created": "2026",
+                "sourceMaterial": null
+            },
+            "status": "pilot"
+        },
+        {
+            "id": "LISTEN-ID-F-004",
+            "version": "1.0",
+            "language": "id",
+            "skill": "listening",
+            "domain": "general",
+            "difficulty": 1,
+            "construct": "explicit_information",
+            "stimulusId": "LISTEN-ID-F-STIM-001",
+            "question": "Ke mana tujuan bus tersebut?",
+            "options": [
+                "Terminal utama",
+                "Pusat kota",
+                "Bandara",
+                "Stasiun"
+            ],
+            "correctAnswer": 1,
+            "feedback": {
+                "correct": "Benar. Bus tersebut menuju pusat kota.",
+                "incorrect": "Dengarkan bagian awal pengumuman yang menyebutkan tujuan bus.",
+                "practiceNext": "Latih menemukan informasi tujuan dalam pengumuman singkat."
+            },
+            "provenance": {
+                "type": "original",
+                "creator": "BahasaBahasa",
+                "created": "2026",
+                "sourceMaterial": null
+            },
+            "status": "pilot"
+        },
+        {
+            "id": "LISTEN-ID-F-005",
+            "version": "1.0",
+            "language": "id",
+            "skill": "listening",
+            "domain": "general",
+            "difficulty": 1,
+            "construct": "speaker_intention",
+            "stimulusId": "LISTEN-ID-F-STIM-001",
+            "question": "Apa tujuan utama pengumuman tersebut?",
+            "options": [
+                "Menjelaskan harga tiket bus",
+                "Memberikan informasi keberangkatan kepada penumpang",
+                "Mengumumkan pembatalan perjalanan",
+                "Menawarkan rute perjalanan baru"
+            ],
+            "correctAnswer": 1,
+            "feedback": {
+                "correct": "Benar. Pengumuman memberikan informasi keberangkatan dan instruksi kepada penumpang.",
+                "incorrect": "Pertimbangkan informasi apa yang paling banyak disampaikan kepada pendengar.",
+                "practiceNext": "Latih mengenali tujuan pembicara dalam pengumuman singkat."
+            },
+            "provenance": {
+                "type": "original",
+                "creator": "BahasaBahasa",
+                "created": "2026",
+                "sourceMaterial": null
+            },
+            "status": "pilot"
+        },
+        {
+            "id": "LISTEN-ID-D-001",
+            "version": "1.0",
+            "language": "id",
+            "skill": "listening",
+            "domain": "workplace",
+            "difficulty": 2,
+            "construct": "explicit_information",
+            "stimulusId": "LISTEN-ID-D-STIM-001",
+            "question": "Mengapa pesanan belum dikirim pagi ini?",
+            "options": [
+                "Pelanggan membatalkan pesanan",
+                "Ditemukan dua kotak dengan label yang salah",
+                "Kendaraan pengiriman rusak",
+                "Gudang belum menerima barang"
+            ],
+            "correctAnswer": 1,
+            "feedback": {
+                "correct": "Benar. Gudang menemukan dua kotak dengan label yang salah.",
+                "incorrect": "Dengarkan alasan yang diberikan Arif setelah mengatakan bahwa pesanan belum dikirim.",
+                "practiceNext": "Latih menangkap alasan yang dinyatakan langsung dalam percakapan kerja."
+            },
+            "provenance": {
+                "type": "original",
+                "creator": "BahasaBahasa",
+                "created": "2026",
+                "sourceMaterial": null
+            },
+            "status": "pilot"
+        },
+        {
+            "id": "LISTEN-ID-D-002",
+            "version": "1.0",
+            "language": "id",
+            "skill": "listening",
+            "domain": "workplace",
+            "difficulty": 2,
+            "construct": "explicit_information",
+            "stimulusId": "LISTEN-ID-D-STIM-001",
+            "question": "Berapa kotak yang memiliki label salah?",
+            "options": [
+                "Satu",
+                "Dua",
+                "Tiga",
+                "Empat"
+            ],
+            "correctAnswer": 1,
+            "feedback": {
+                "correct": "Benar. Ada dua kotak dengan label yang salah.",
+                "incorrect": "Dengarkan kembali bagian yang menjelaskan temuan gudang.",
+                "practiceNext": "Latih menangkap informasi jumlah dalam percakapan."
+            },
+            "provenance": {
+                "type": "original",
+                "creator": "BahasaBahasa",
+                "created": "2026",
+                "sourceMaterial": null
+            },
+            "status": "pilot"
+        },
+        {
+            "id": "LISTEN-ID-D-003",
+            "version": "1.0",
+            "language": "id",
+            "skill": "listening",
+            "domain": "workplace",
+            "difficulty": 2,
+            "construct": "contextual_meaning",
+            "stimulusId": "LISTEN-ID-D-STIM-001",
+            "question": "Apa yang dapat dipahami tentang status pesanan tersebut?",
+            "options": [
+                "Pesanan sudah sampai di Surabaya",
+                "Pesanan dibatalkan oleh perusahaan",
+                "Pesanan tetap akan dikirim setelah label diperiksa",
+                "Pesanan harus dibuat ulang oleh pelanggan"
+            ],
+            "correctAnswer": 2,
+            "feedback": {
+                "correct": "Benar. Pesanan tidak dibatalkan dan akan dikirim setelah pemeriksaan label.",
+                "incorrect": "Hubungkan informasi bahwa pesanan tidak dibatalkan dengan rencana setelah pemeriksaan label.",
+                "practiceNext": "Latih menggabungkan beberapa informasi untuk memahami keadaan suatu peristiwa."
+            },
+            "provenance": {
+                "type": "original",
+                "creator": "BahasaBahasa",
+                "created": "2026",
+                "sourceMaterial": null
+            },
+            "status": "pilot"
+        },
+        {
+            "id": "LISTEN-ID-D-004",
+            "version": "1.0",
+            "language": "id",
+            "skill": "listening",
+            "domain": "workplace",
+            "difficulty": 2,
+            "construct": "instruction_comprehension",
+            "stimulusId": "LISTEN-ID-D-STIM-001",
+            "question": "Apa yang akan dilakukan sebelum barang dikirim?",
+            "options": [
+                "Menghubungi perusahaan lain",
+                "Memeriksa kembali label",
+                "Mengganti seluruh isi kotak",
+                "Membatalkan dokumen pengiriman"
+            ],
+            "correctAnswer": 1,
+            "feedback": {
+                "correct": "Benar. Label akan diperiksa kembali sebelum barang dikirim.",
+                "incorrect": "Dengarkan urutan tindakan yang dijelaskan setelah masalah label ditemukan.",
+                "practiceNext": "Latih memahami urutan tindakan dalam percakapan kerja."
+            },
+            "provenance": {
+                "type": "original",
+                "creator": "BahasaBahasa",
+                "created": "2026",
+                "sourceMaterial": null
+            },
+            "status": "pilot"
+        },
+        {
+            "id": "LISTEN-ID-D-005",
+            "version": "1.0",
+            "language": "id",
+            "skill": "listening",
+            "domain": "workplace",
+            "difficulty": 2,
+            "construct": "explicit_information",
+            "stimulusId": "LISTEN-ID-D-STIM-001",
+            "question": "Apa yang sudah dilakukan terkait pelanggan?",
+            "options": [
+                "Pelanggan diminta mengambil barang sendiri",
+                "Pelanggan diberi tahu tentang keterlambatan",
+                "Pelanggan diminta membuat pesanan baru",
+                "Pelanggan menerima pengembalian dana"
+            ],
+            "correctAnswer": 1,
+            "feedback": {
+                "correct": "Benar. Pelanggan sudah diberi tahu tentang keterlambatan.",
+                "incorrect": "Dengarkan kalimat terakhir dalam percakapan.",
+                "practiceNext": "Latih menemukan tindakan yang sudah selesai dilakukan dalam percakapan."
+            },
+            "provenance": {
+                "type": "original",
+                "creator": "BahasaBahasa",
+                "created": "2026",
+                "sourceMaterial": null
+            },
+            "status": "pilot"
+        },
+        {
+            "id": "LISTEN-ID-S-001",
+            "version": "1.0",
+            "language": "id",
+            "skill": "listening",
+            "domain": "workplace",
+            "difficulty": 3,
+            "construct": "instruction_comprehension",
+            "stimulusId": "LISTEN-ID-S-STIM-001",
+            "question": "Dalam kondisi normal, apa yang harus dilakukan pekerja sebelum menghubungi teknisi?",
+            "options": [
+                "Menghentikan seluruh kegiatan perusahaan",
+                "Mencatat kerusakan melalui formulir digital",
+                "Menunggu persetujuan supervisor selama satu hari",
+                "Memperbaiki peralatan sendiri"
+            ],
+            "correctAnswer": 1,
+            "feedback": {
+                "correct": "Benar. Dalam kondisi normal, kerusakan dicatat melalui formulir digital sebelum teknisi dihubungi.",
+                "incorrect": "Bedakan prosedur normal dengan prosedur ketika kerusakan membahayakan pekerja.",
+                "practiceNext": "Latih membedakan prosedur umum dan pengecualian dalam instruksi lisan."
+            },
+            "provenance": {
+                "type": "original",
+                "creator": "BahasaBahasa",
+                "created": "2026",
+                "sourceMaterial": null
+            },
+            "status": "pilot"
+        },
+        {
+            "id": "LISTEN-ID-S-002",
+            "version": "1.0",
+            "language": "id",
+            "skill": "listening",
+            "domain": "workplace",
+            "difficulty": 3,
+            "construct": "instruction_comprehension",
+            "stimulusId": "LISTEN-ID-S-STIM-001",
+            "question": "Jika kerusakan dapat membahayakan pekerja, tindakan apa yang harus dilakukan terlebih dahulu?",
+            "options": [
+                "Mengisi formulir digital sampai selesai",
+                "Menghentikan mesin",
+                "Menghubungi bagian administrasi",
+                "Menunggu teknisi datang"
+            ],
+            "correctAnswer": 1,
+            "feedback": {
+                "correct": "Benar. Jika ada bahaya, mesin harus dihentikan terlebih dahulu.",
+                "incorrect": "Perhatikan urutan tindakan khusus ketika keselamatan pekerja terancam.",
+                "practiceNext": "Latih mengenali prioritas tindakan dalam instruksi keselamatan."
+            },
+            "provenance": {
+                "type": "original",
+                "creator": "BahasaBahasa",
+                "created": "2026",
+                "sourceMaterial": null
+            },
+            "status": "pilot"
+        },
+        {
+            "id": "LISTEN-ID-S-003",
+            "version": "1.0",
+            "language": "id",
+            "skill": "listening",
+            "domain": "workplace",
+            "difficulty": 3,
+            "construct": "contextual_meaning",
+            "stimulusId": "LISTEN-ID-S-STIM-001",
+            "question": "Mengapa formulir digital boleh dilengkapi setelah kondisi aman dalam situasi berbahaya?",
+            "options": [
+                "Karena formulir digital tidak lagi diperlukan",
+                "Karena teknisi akan mengisi formulir tersebut",
+                "Karena tindakan keselamatan harus didahulukan",
+                "Karena supervisor tidak boleh membaca formulir"
+            ],
+            "correctAnswer": 2,
+            "feedback": {
+                "correct": "Benar. Dalam keadaan berbahaya, tindakan keselamatan diprioritaskan sebelum administrasi dilengkapi.",
+                "incorrect": "Hubungkan pengecualian prosedur dengan tujuan agar tindakan darurat tidak tertunda.",
+                "practiceNext": "Latih memahami alasan implisit di balik pengecualian suatu prosedur."
+            },
+            "provenance": {
+                "type": "original",
+                "creator": "BahasaBahasa",
+                "created": "2026",
+                "sourceMaterial": null
+            },
+            "status": "pilot"
+        },
+        {
+            "id": "LISTEN-ID-S-004",
+            "version": "1.0",
+            "language": "id",
+            "skill": "listening",
+            "domain": "workplace",
+            "difficulty": 3,
+            "construct": "speaker_intention",
+            "stimulusId": "LISTEN-ID-S-STIM-001",
+            "question": "Apa tujuan utama prosedur tersebut?",
+            "options": [
+                "Mengurangi jumlah teknisi yang dibutuhkan",
+                "Menghapus seluruh proses administrasi",
+                "Memastikan pelaporan dilakukan tanpa menunda tindakan darurat",
+                "Membatasi pekerja yang boleh melaporkan kerusakan"
+            ],
+            "correctAnswer": 2,
+            "feedback": {
+                "correct": "Benar. Prosedur menjaga pencatatan tetap dilakukan tanpa menghambat tindakan darurat.",
+                "incorrect": "Perhatikan kalimat terakhir yang menjelaskan alasan prosedur dibuat.",
+                "practiceNext": "Latih mengenali tujuan keseluruhan dari instruksi yang memiliki beberapa langkah."
+            },
+            "provenance": {
+                "type": "original",
+                "creator": "BahasaBahasa",
+                "created": "2026",
+                "sourceMaterial": null
+            },
+            "status": "pilot"
+        },
+        {
+            "id": "LISTEN-ID-S-005",
+            "version": "1.0",
+            "language": "id",
+            "skill": "listening",
+            "domain": "workplace",
+            "difficulty": 3,
+            "construct": "contextual_meaning",
+            "stimulusId": "LISTEN-ID-S-STIM-001",
+            "question": "Pernyataan mana yang paling tepat menggambarkan hubungan antara keselamatan dan pencatatan?",
+            "options": [
+                "Pencatatan selalu harus selesai sebelum tindakan lain dilakukan",
+                "Keselamatan menjadi prioritas, tetapi pencatatan tetap harus diselesaikan",
+                "Pencatatan tidak diperlukan jika mesin dihentikan",
+                "Keselamatan hanya menjadi tanggung jawab teknisi"
+            ],
+            "correctAnswer": 1,
+            "feedback": {
+                "correct": "Benar. Keselamatan diprioritaskan dalam keadaan berbahaya, tetapi kewajiban pencatatan tetap ada.",
+                "incorrect": "Gabungkan informasi tentang tindakan darurat dengan kewajiban mengisi formulir setelah kondisi aman.",
+                "practiceNext": "Latih menghubungkan aturan utama dengan pengecualian dan kewajiban lanjutan."
+            },
+            "provenance": {
+                "type": "original",
+                "creator": "BahasaBahasa",
+                "created": "2026",
+                "sourceMaterial": null
+            },
+            "status": "pilot"
+        }
+    ]
+}
