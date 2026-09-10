@@ -2,5 +2,13 @@
   "$schema": "./node_modules/wrangler/config-schema.json",
   "name": "bahasabahasa-api",
   "main": "src/index.js",
-  "compatibility_date": "2026-09-10"
+  "compatibility_date": "2026-09-10",
+
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "bahasabahasa-db",
+      "database_id": "local-development"
+    }
+  ]
 }
