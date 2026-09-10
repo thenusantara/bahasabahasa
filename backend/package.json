@@ -1,0 +1,17 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "Backend services, APIs, business logic, authentication, databases, and infrastructure implementation.",
+  "main": "index.js",
+  "scripts": {
+  "dev": "wrangler dev",
+  "check": "wrangler deploy --dry-run"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "wrangler": "^4.130.0"
+  }
+}
