@@ -83,3 +83,57 @@ export function validateLoginInput(input) {
     }
   };
 }
+
+export function validateProfileInput(input) {
+  const displayName =
+    typeof input?.displayName === "string"
+      ? input.displayName.trim()
+      : "";
+
+  const regionCode =
+    typeof input?.regionCode === "string"
+      ? input.regionCode.trim()
+      : "";
+
+  const bio =
+    typeof input?.bio === "string"
+      ? input.bio.trim()
+      : "";
+
+  if (displayName.length < 2) {
+    return {
+      ok: false,
+      message: "Display name must contain at least 2 characters."
+    };
+  }
+
+  if (displayName.length > 80) {
+    return {
+      ok: false,
+      message: "Display name must not exceed 80 characters."
+    };
+  }
+
+  if (regionCode.length > 64) {
+    return {
+      ok: false,
+      message: "Region code must not exceed 64 characters."
+    };
+  }
+
+  if (bio.length > 500) {
+    return {
+      ok: false,
+      message: "Bio must not exceed 500 characters."
+    };
+  }
+
+  return {
+    ok: true,
+    value: {
+      displayName,
+      regionCode: regionCode || null,
+      bio: bio || null
+    }
+  };
+}

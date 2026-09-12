@@ -5,6 +5,11 @@ import {
   handleMe
 } from "./routes/auth.js";
 
+import {
+  handleGetProfile,
+  handlePutProfile
+} from "./routes/profile.js";
+
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
@@ -52,6 +57,26 @@ export default {
     ) {
       return handleMe(request, env);
     }
+
+    if (
+    url.pathname === "/me/profile" &&
+    request.method === "GET"
+  ) {
+  return handleGetProfile(
+    request,
+    env
+  );
+  }
+
+  if (
+  url.pathname === "/me/profile" &&
+  request.method === "PUT"
+  ) {
+  return handlePutProfile(
+    request,
+    env
+  );
+  }
 
     // Fallback
     return Response.json(
