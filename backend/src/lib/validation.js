@@ -53,3 +53,33 @@ export function validateSignupInput(input) {
     }
   };
 }
+
+export function validateLoginInput(input) {
+  const email = normalizeEmail(input?.email);
+  const password =
+    typeof input?.password === "string"
+      ? input.password
+      : "";
+
+  if (!email || !EMAIL_PATTERN.test(email)) {
+    return {
+      ok: false,
+      message: "Enter a valid email address."
+    };
+  }
+
+  if (!password) {
+    return {
+      ok: false,
+      message: "Password is required."
+    };
+  }
+
+  return {
+    ok: true,
+    value: {
+      email,
+      password
+    }
+  };
+}

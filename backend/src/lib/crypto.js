@@ -73,3 +73,94 @@ export async function hashPassword(password) {
     bytesToHex(new Uint8Array(derivedBits))
   ].join("$");
 }
+
+function hexToBytes(hex) {
+  if (
+    typeof hex !== "string" ||
+    hex.length % 2 !== 0 ||
+    !/^[0-9a-f]+$/i.test(hex)
+  ) {
+    throw new Error("Invalid hexadecimal value.");
+  }
+
+  const bytes = new Uint8Array(hex.length / 2);
+
+  for (let i = 0; i < bytes.length; i += 1) {
+    bytes[i] = Number.parseInt(
+      hex.slice(i * 2, i * 2 + 2),
+      16
+    );
+  }
+
+  return bytes;
+}
+
+function timingSafeEqual(left, right) {
+  if (left.length !== right.length) {
+    return false;
+  }
+
+  let difference = 0;
+
+  for (let i = 0; i < left.length; i += 1) {
+    difference |= left[i] ^ right[i];
+  }
+
+  return difference === 0;
+}
+
+export async function verifyPassword(
+  password,
+  storedHash
+) {
+  try {
+    const [
+      algorithm,
+      iterationsText,
+      saltHex,
+      expectedHex
+    ] = storedHash.split("$");
+
+    if (algorithm !== "pbkdf2-sha256") {
+      return false;
+    }
+
+    const iterations = Number(iterationsText);
+
+    if (
+      !Number.isInteger(iterations) ||
+      iterations <= 0
+    ) {
+      return false;
+    }
+
+    const salt = hexToBytes(saltHex);
+    const expected = hexToBytes(expectedHex);
+
+    const keyMaterial = await crypto.subtle.importKey(
+      "raw",
+      encoder.encode(password),
+      "PBKDF2",
+      false,
+      ["deriveBits"]
+    );
+
+    const derivedBits = await crypto.subtle.deriveBits(
+      {
+        name: "PBKDF2",
+        hash: "SHA-256",
+        salt,
+        iterations
+      },
+      keyMaterial,
+      expected.length * 8
+    );
+
+    return timingSafeEqual(
+      new Uint8Array(derivedBits),
+      expected
+    );
+  } catch {
+    return false;
+  }
+}
