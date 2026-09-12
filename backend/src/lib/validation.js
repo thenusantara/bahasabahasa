@@ -137,3 +137,71 @@ export function validateProfileInput(input) {
     }
   };
 }
+
+const LANGUAGE_RELATIONSHIPS = new Set([
+  "speak",
+  "learn",
+  "teach",
+  "research",
+  "review"
+]);
+
+export function validateUserLanguageInput(input) {
+  const languageId =
+    typeof input?.languageId === "string"
+      ? input.languageId.trim()
+      : "";
+
+  const relationship =
+    typeof input?.relationship === "string"
+      ? input.relationship.trim().toLowerCase()
+      : "";
+
+  const regionNote =
+    typeof input?.regionNote === "string"
+      ? input.regionNote.trim()
+      : "";
+
+  if (!languageId) {
+    return {
+      ok: false,
+      message: "Language is required."
+    };
+  }
+
+  if (languageId.length > 100) {
+    return {
+      ok: false,
+      message: "Language identifier is too long."
+    };
+  }
+
+  if (
+    !LANGUAGE_RELATIONSHIPS.has(
+      relationship
+    )
+  ) {
+    return {
+      ok: false,
+      message:
+        "Relationship must be speak, learn, teach, research, or review."
+    };
+  }
+
+  if (regionNote.length > 120) {
+    return {
+      ok: false,
+      message:
+        "Region note must not exceed 120 characters."
+    };
+  }
+
+  return {
+    ok: true,
+    value: {
+      languageId,
+      relationship,
+      regionNote: regionNote || null
+    }
+  };
+}
