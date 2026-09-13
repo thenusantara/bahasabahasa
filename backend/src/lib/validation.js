@@ -205,3 +205,63 @@ export function validateUserLanguageInput(input) {
     }
   };
 }
+
+const PARTICIPATION_INTERESTS = new Set([
+  "learn",
+  "teach",
+  "research",
+  "contribute",
+  "language_ai"
+]);
+
+export function validateParticipationInterestsInput(input) {
+  if (!Array.isArray(input?.interests)) {
+    return {
+      ok: false,
+      message: "Interests must be an array."
+    };
+  }
+
+  if (input.interests.length > 5) {
+    return {
+      ok: false,
+      message: "Too many participation interests."
+    };
+  }
+
+  const interests = [];
+
+  for (const value of input.interests) {
+    if (typeof value !== "string") {
+      return {
+        ok: false,
+        message: "Each interest must be a string."
+      };
+    }
+
+    const interest = value
+      .trim()
+      .toLowerCase();
+
+    if (!PARTICIPATION_INTERESTS.has(interest)) {
+      return {
+        ok: false,
+        message:
+          "Interest must be learn, teach, research, contribute, or language_ai."
+      };
+    }
+
+    if (!interests.includes(interest)) {
+      interests.push(interest);
+    }
+  }
+
+  interests.sort();
+
+  return {
+    ok: true,
+    value: {
+      interests
+    }
+  };
+}

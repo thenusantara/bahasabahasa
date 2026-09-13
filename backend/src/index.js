@@ -17,6 +17,11 @@ import {
   handleDeleteMyLanguage
 } from "./routes/languages.js";
 
+import {
+  handleGetMyInterests,
+  handlePutMyInterests
+} from "./routes/interests.js";
+
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
@@ -70,9 +75,9 @@ export default {
     request.method === "GET"
   ) {
   return handleGetProfile(
-    request,
-    env
-  );
+      request,
+      env
+    );
   }
 
   if (
@@ -80,9 +85,9 @@ export default {
   request.method === "PUT"
   ) {
   return handlePutProfile(
-    request,
-    env
-  );
+      request,
+      env
+    );
   }
 
   if (
@@ -90,19 +95,19 @@ export default {
   request.method === "GET"
   ) {
   return handleGetLanguages(
-    request,
-    env
-  );
+      request,
+      env
+    );
   }
 
   if (
   url.pathname === "/me/languages" &&
-  request.method === "GET"
+    request.method === "GET"
   ) {
   return handleGetMyLanguages(
-    request,
-    env
-  );
+      request,
+      env
+    );
   }
 
   if (
@@ -110,9 +115,9 @@ export default {
   request.method === "POST"
   ) {
   return handleAddMyLanguage(
-    request,
-    env
-  );
+      request,
+      env
+    );
   }
 
   const userLanguageMatch =
@@ -122,13 +127,33 @@ export default {
 
   if (
   userLanguageMatch &&
-  request.method === "DELETE"
+    request.method === "DELETE"
   ) {
   return handleDeleteMyLanguage(
-    request,
-    env,
+      request,
+      env,
     userLanguageMatch[1]
-  );
+    );
+  }
+
+  if (
+  url.pathname === "/me/interests" &&
+  request.method === "GET"
+  ) {
+  return handleGetMyInterests(
+      request,
+      env
+    );
+  }
+
+  if (
+  url.pathname === "/me/interests" &&
+    request.method === "PUT"
+  ) {
+  return handlePutMyInterests(
+      request,
+      env
+    );
   }
 
     // Fallback
