@@ -2,7 +2,7 @@
 // Application Configuration
 // ============================================================
 
-const APP_MODE = "auth";
+let appMode = "auth";
 
 const DEFAULT_ROUTE = "home";
 const DEFAULT_AUTH_VIEW = "signup";
@@ -831,6 +831,38 @@ async function getCurrentUser() {
 
 
 // ============================================================
+// Profile API
+// ============================================================
+
+async function getProfile() {
+  return apiRequest(
+    "/me/profile",
+    {
+      method: "GET"
+    }
+  );
+}
+
+
+async function saveProfile(profile) {
+  return apiRequest(
+    "/me/profile",
+    {
+      method: "PUT",
+      body: JSON.stringify({
+        displayName:
+          profile.displayName,
+        regionCode:
+          profile.regionCode,
+        bio:
+          profile.bio
+      })
+    }
+  );
+}
+
+
+// ============================================================
 // Authentication Form Submission
 // ============================================================
 
@@ -903,10 +935,14 @@ async function handleAuthSubmit(event) {
     authSession.user =
       currentUser.user;
 
-    setAuthMessage(
-      `Authenticated as ${currentUser.user.email}.`,
-      "ready"
-    );
+    appMode = "app";
+
+    if (getHashValue() === "profile") {
+      renderCurrentView();
+    } else {
+      window.location.hash =
+        "profile";
+    }
   } catch (error) {
     setAuthMessage(
       error.message,
@@ -958,11 +994,538 @@ function initializeAuthForm() {
 
 
 // ============================================================
+// Profile Markup
+// ============================================================
+
+function createProfileFormMarkup(profile) {
+  const displayName =
+    profile?.displayName ?? "";
+
+  const regionCode =
+    profile?.regionCode ?? "";
+
+  const bio =
+    profile?.bio ?? "";
+
+  return `
+    <form
+      class="profile-form"
+      id="profile-form"
+      novalidate
+    >
+      <div class="profile-form__field">
+        <label
+          class="profile-form__label"
+          for="profile-display-name"
+        >
+          Display name
+        </label>
+
+        <input
+          class="profile-form__input"
+          id="profile-display-name"
+          name="displayName"
+          type="text"
+          autocomplete="name"
+          minlength="2"
+          maxlength="80"
+          required
+        >
+
+        <p class="profile-form__hint">
+          Use 2 to 80 characters.
+        </p>
+      </div>
+
+      <div class="profile-form__field">
+        <label
+          class="profile-form__label"
+          for="profile-region-code"
+        >
+          Region
+        </label>
+
+        <input
+          class="profile-form__input"
+          id="profile-region-code"
+          name="regionCode"
+          type="text"
+          maxlength="64"
+        >
+
+        <p class="profile-form__hint">
+          Optional. Use up to 64 characters.
+        </p>
+      </div>
+
+      <div class="profile-form__field">
+        <label
+          class="profile-form__label"
+          for="profile-bio"
+        >
+          About you
+        </label>
+
+        <textarea
+          class="profile-form__input profile-form__textarea"
+          id="profile-bio"
+          name="bio"
+          maxlength="500"
+          rows="6"
+        ></textarea>
+
+        <p class="profile-form__hint">
+          Optional. Use up to 500 characters.
+        </p>
+      </div>
+
+      <p
+        class="profile-message"
+        id="profile-message"
+        role="status"
+        aria-live="polite"
+      ></p>
+
+      <div class="profile-form__actions">
+        <button
+          class="profile-form__submit"
+          type="submit"
+        >
+          Save Profile
+        </button>
+      </div>
+    </form>
+  `;
+}
+
+
+// ============================================================
+// Profile State
+// ============================================================
+
+function getProfileMessageElement() {
+  return document.querySelector(
+    "#profile-message"
+  );
+}
+
+
+function setProfileMessage(
+  message,
+  state = ""
+) {
+  const messageElement =
+    getProfileMessageElement();
+
+  if (!messageElement) {
+    return;
+  }
+
+  messageElement.textContent =
+    message;
+
+  if (state) {
+    messageElement.dataset.state =
+      state;
+  } else {
+    delete messageElement.dataset.state;
+  }
+}
+
+
+function clearProfileFieldErrors(form) {
+  const fields =
+    form.querySelectorAll(
+      ".profile-form__input"
+    );
+
+  fields.forEach((field) => {
+    field.removeAttribute(
+      "aria-invalid"
+    );
+  });
+}
+
+
+function setProfileFormBusy(form, busy) {
+  const submitButton =
+    form.querySelector(
+      ".profile-form__submit"
+    );
+
+  if (!submitButton) {
+    return;
+  }
+
+  submitButton.disabled =
+    busy;
+
+  form.setAttribute(
+    "aria-busy",
+    String(busy)
+  );
+}
+
+
+// ============================================================
+// Profile Validation
+// ============================================================
+
+function validateProfileForm(form) {
+  const displayName =
+    form.elements.displayName;
+
+  const regionCode =
+    form.elements.regionCode;
+
+  const bio =
+    form.elements.bio;
+
+  const displayNameValue =
+    displayName.value.trim();
+
+  const regionCodeValue =
+    regionCode.value.trim();
+
+  const bioValue =
+    bio.value.trim();
+
+  if (!displayNameValue) {
+    return {
+      valid: false,
+      field: displayName,
+      message:
+        "Enter a display name."
+    };
+  }
+
+  if (displayNameValue.length < 2) {
+    return {
+      valid: false,
+      field: displayName,
+      message:
+        "Display name must contain at least 2 characters."
+    };
+  }
+
+  if (displayNameValue.length > 80) {
+    return {
+      valid: false,
+      field: displayName,
+      message:
+        "Display name must not exceed 80 characters."
+    };
+  }
+
+  if (regionCodeValue.length > 64) {
+    return {
+      valid: false,
+      field: regionCode,
+      message:
+        "Region must not exceed 64 characters."
+    };
+  }
+
+  if (bioValue.length > 500) {
+    return {
+      valid: false,
+      field: bio,
+      message:
+        "About you must not exceed 500 characters."
+    };
+  }
+
+  return {
+    valid: true,
+    value: {
+      displayName:
+        displayNameValue,
+      regionCode:
+        regionCodeValue || null,
+      bio:
+        bioValue || null
+    }
+  };
+}
+
+
+// ============================================================
+// Profile Rendering
+// ============================================================
+
+function populateProfileForm(profile) {
+  if (!profile) {
+    return;
+  }
+
+  const form =
+    document.querySelector(
+      "#profile-form"
+    );
+
+  if (!form) {
+    return;
+  }
+
+  form.elements.displayName.value =
+    profile.displayName ?? "";
+
+  form.elements.regionCode.value =
+    profile.regionCode ?? "";
+
+  form.elements.bio.value =
+    profile.bio ?? "";
+}
+
+
+async function renderProfileView() {
+  const route =
+    routes.profile;
+
+  const view =
+    document.querySelector("#app-view");
+
+  if (!view) {
+    console.error(
+      "[bahasabahasa] Cannot render: #app-view was not found."
+    );
+
+    return;
+  }
+
+  view.innerHTML = `
+    <p class="app-eyebrow">
+      ${route.eyebrow}
+    </p>
+
+    <h1>
+      ${route.heading}
+    </h1>
+
+    <p class="app-lead">
+      ${route.description}
+    </p>
+
+    <div
+      class="app-status"
+      role="status"
+    >
+      <span class="app-status__label">
+        Profile status
+      </span>
+
+      <strong>
+        Loading profile...
+      </strong>
+    </div>
+  `;
+
+  document.title =
+    `${route.title} | bahasabahasa`;
+
+  updateNavigation("profile");
+
+  document.documentElement.dataset.route =
+    "profile";
+
+  try {
+    const data =
+      await getProfile();
+
+    view.innerHTML = `
+      <p class="app-eyebrow">
+        ${route.eyebrow}
+      </p>
+
+      <h1>
+        ${route.heading}
+      </h1>
+
+      <p class="app-lead">
+        ${route.description}
+      </p>
+
+      ${createProfileFormMarkup(
+        data.profile
+      )}
+    `;
+
+    populateProfileForm(
+      data.profile
+    );
+
+    initializeProfileForm();
+
+    if (data.profile) {
+      setProfileMessage(
+        "Profile loaded.",
+        "ready"
+      );
+    }
+  } catch (error) {
+    view.innerHTML = `
+      <p class="app-eyebrow">
+        ${route.eyebrow}
+      </p>
+
+      <h1>
+        ${route.heading}
+      </h1>
+
+      <p class="app-lead">
+        ${route.description}
+      </p>
+
+      <div
+        class="app-status app-status--error"
+        role="alert"
+      >
+        <span class="app-status__label">
+          Profile unavailable
+        </span>
+
+        <strong>
+          ${error.message}
+        </strong>
+      </div>
+    `;
+  }
+}
+
+
+// ============================================================
+// Profile Submission
+// ============================================================
+
+async function handleProfileSubmit(event) {
+  event.preventDefault();
+
+  const form =
+    event.currentTarget;
+
+  clearProfileFieldErrors(form);
+
+  const result =
+    validateProfileForm(form);
+
+  if (!result.valid) {
+    markFieldInvalid(
+      result.field
+    );
+
+    setProfileMessage(
+      result.message,
+      "error"
+    );
+
+    return;
+  }
+
+  setProfileFormBusy(
+    form,
+    true
+  );
+
+  setProfileMessage(
+    "Saving profile..."
+  );
+
+  try {
+    const data =
+      await saveProfile(
+        result.value
+      );
+
+    populateProfileForm(
+      data.profile
+    );
+
+    setProfileMessage(
+      "Profile saved.",
+      "ready"
+    );
+  } catch (error) {
+    setProfileMessage(
+      error.message,
+      "error"
+    );
+  } finally {
+    setProfileFormBusy(
+      form,
+      false
+    );
+  }
+}
+
+
+// ============================================================
+// Profile Initialization
+// ============================================================
+
+function initializeProfileForm() {
+  const form =
+    document.querySelector(
+      "#profile-form"
+    );
+
+  if (!form) {
+    return;
+  }
+
+  form.addEventListener(
+    "submit",
+    handleProfileSubmit
+  );
+
+  const fields =
+    form.querySelectorAll(
+      ".profile-form__input"
+    );
+
+  fields.forEach((field) => {
+    field.addEventListener(
+      "input",
+      () => {
+        field.removeAttribute(
+          "aria-invalid"
+        );
+
+        setProfileMessage("");
+      }
+    );
+  });
+}
+
+
+// ============================================================
+// Application Route Dispatch
+// ============================================================
+
+function renderRoute() {
+  const routeName =
+    getRouteFromHash();
+
+  if (routeName === "profile") {
+    renderProfileView();
+
+    return;
+  }
+
+  renderView(routeName);
+
+  updateNavigation(routeName);
+
+  document.documentElement.dataset.route =
+    routeName;
+}
+
+
+// ============================================================
 // View Dispatch
 // ============================================================
 
 function renderCurrentView() {
-  if (APP_MODE === "auth") {
+  if (appMode === "auth") {
     renderAuthView(
       getAuthViewFromHash()
     );
@@ -985,7 +1548,7 @@ function initializeApp() {
   );
 
   if (
-    APP_MODE !== "auth" &&
+    appMode !== "auth" &&
     !window.location.hash
   ) {
     window.location.replace(
