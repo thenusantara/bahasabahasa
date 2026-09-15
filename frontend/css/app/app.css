@@ -1,10 +1,21 @@
 :root {
   --app-bg: #f6f5f1;
   --app-surface: #ffffff;
+
   --app-text: #1d2521;
   --app-muted: #68716c;
+
   --app-border: #dfe3df;
+  --app-border-strong: #b8c0bb;
+
   --app-accent: #234f3f;
+  --app-accent-hover: #1b4033;
+
+  --app-danger: #9b2c2c;
+  --app-danger-bg: #fff6f6;
+
+  --app-success: #245b43;
+  --app-success-bg: #f4faf6;
 
   --app-radius-sm: 0.5rem;
   --app-radius-md: 0.875rem;
@@ -20,6 +31,11 @@
   --app-sidebar-width: 15rem;
 }
 
+
+/* ============================================================
+   Global Foundation
+   ============================================================ */
+
 *,
 *::before,
 *::after {
@@ -33,8 +49,10 @@ html {
 body {
   margin: 0;
   min-width: 0;
+
   background: var(--app-bg);
   color: var(--app-text);
+
   font-family:
     Inter,
     system-ui,
@@ -42,6 +60,7 @@ body {
     BlinkMacSystemFont,
     "Segoe UI",
     sans-serif;
+
   line-height: 1.6;
 }
 
@@ -49,14 +68,26 @@ a {
   color: inherit;
 }
 
+
+/* ============================================================
+   Application Shell
+   ============================================================ */
+
 .app-shell {
   min-height: 100vh;
+
   display: flex;
   flex-direction: column;
 }
 
+
+/* ============================================================
+   Header
+   ============================================================ */
+
 .app-header {
   min-height: 4.5rem;
+
   padding:
     var(--app-space-3)
     clamp(1rem, 4vw, 3rem);
@@ -64,29 +95,46 @@ a {
   display: flex;
   align-items: center;
   justify-content: space-between;
+
   gap: var(--app-space-3);
 
   background: var(--app-surface);
-  border-bottom: 1px solid var(--app-border);
+
+  border-bottom:
+    1px solid var(--app-border);
 }
 
 .app-brand {
   font-size: 1.125rem;
   font-weight: 700;
+
   text-decoration: none;
+}
+
+.app-brand:hover,
+.app-brand:focus-visible {
+  text-decoration: underline;
 }
 
 .app-context {
   color: var(--app-muted);
+
   font-size: 0.875rem;
 }
+
+
+/* ============================================================
+   Main Layout
+   ============================================================ */
 
 .app-layout {
   width: 100%;
   max-width: var(--app-content-max);
+
   margin: 0 auto;
 
   display: grid;
+
   grid-template-columns:
     var(--app-sidebar-width)
     minmax(0, 1fr);
@@ -94,13 +142,23 @@ a {
   flex: 1;
 }
 
+
+/* ============================================================
+   Sidebar Navigation
+   ============================================================ */
+
 .app-sidebar {
-  padding: var(--app-space-5) var(--app-space-3);
-  border-right: 1px solid var(--app-border);
+  padding:
+    var(--app-space-5)
+    var(--app-space-3);
+
+  border-right:
+    1px solid var(--app-border);
 }
 
 .app-nav {
   display: grid;
+
   gap: 0.25rem;
 }
 
@@ -109,96 +167,359 @@ a {
     var(--app-space-2)
     var(--app-space-3);
 
-  border-radius: var(--app-radius-sm);
+  border-radius:
+    var(--app-radius-sm);
 
   color: var(--app-muted);
+
   text-decoration: none;
+
   font-weight: 600;
 }
 
 .app-nav__link:hover,
 .app-nav__link:focus-visible {
   background: var(--app-surface);
+
   color: var(--app-text);
 }
 
 .app-nav__link--active {
   background: var(--app-surface);
+
   color: var(--app-accent);
 }
 
+
+/* ============================================================
+   Main View
+   ============================================================ */
+
 .app-main {
   min-width: 0;
+
   padding:
     clamp(2rem, 6vw, 5rem)
     clamp(1rem, 5vw, 4rem);
 }
 
 .app-view {
+  width: 100%;
   max-width: 44rem;
 }
 
 .app-eyebrow {
-  margin: 0 0 var(--app-space-2);
+  margin:
+    0
+    0
+    var(--app-space-2);
+
   color: var(--app-accent);
+
   font-size: 0.8rem;
   font-weight: 700;
+
   letter-spacing: 0.08em;
+
   text-transform: uppercase;
 }
 
 .app-view h1 {
-  margin: 0;
   max-width: 12ch;
-  font-size: clamp(2rem, 6vw, 4rem);
+
+  margin: 0;
+
+  font-size:
+    clamp(2rem, 6vw, 4rem);
+
   line-height: 1.05;
+
   letter-spacing: -0.035em;
 }
 
 .app-lead {
   max-width: 38rem;
+
   margin:
     var(--app-space-4)
     0
     var(--app-space-5);
 
   color: var(--app-muted);
-  font-size: clamp(1rem, 2vw, 1.125rem);
+
+  font-size:
+    clamp(1rem, 2vw, 1.125rem);
 }
 
+
+/* ============================================================
+   Generic Status
+   ============================================================ */
+
 .app-status {
-  padding: var(--app-space-4);
+  padding:
+    var(--app-space-4);
 
   display: grid;
+
   gap: 0.25rem;
 
-  background: var(--app-surface);
-  border: 1px solid var(--app-border);
-  border-radius: var(--app-radius-md);
+  background:
+    var(--app-surface);
+
+  border:
+    1px solid
+    var(--app-border);
+
+  border-radius:
+    var(--app-radius-md);
 }
 
 .app-status__label {
   color: var(--app-muted);
+
   font-size: 0.8rem;
+
   text-transform: uppercase;
+
   letter-spacing: 0.06em;
 }
+
+
+/* ============================================================
+   Authentication Form
+   ============================================================ */
+
+.auth-form {
+  width: 100%;
+
+  max-width: 32rem;
+
+  display: grid;
+
+  gap: var(--app-space-4);
+}
+
+.auth-form__field {
+  display: grid;
+
+  gap: var(--app-space-1);
+}
+
+.auth-form__label {
+  font-weight: 650;
+}
+
+.auth-form__input {
+  width: 100%;
+
+  min-height: 3rem;
+
+  padding:
+    0.75rem
+    0.875rem;
+
+  background:
+    var(--app-surface);
+
+  color:
+    var(--app-text);
+
+  border:
+    1px solid
+    var(--app-border-strong);
+
+  border-radius:
+    var(--app-radius-sm);
+
+  font: inherit;
+}
+
+.auth-form__input:hover {
+  border-color:
+    var(--app-muted);
+}
+
+.auth-form__input:focus {
+  outline:
+    3px solid
+    color-mix(
+      in srgb,
+      var(--app-accent) 25%,
+      transparent
+    );
+
+  outline-offset: 2px;
+
+  border-color:
+    var(--app-accent);
+}
+
+.auth-form__input[aria-invalid="true"] {
+  border-color:
+    var(--app-danger);
+}
+
+.auth-form__hint {
+  margin: 0;
+
+  color: var(--app-muted);
+
+  font-size: 0.875rem;
+}
+
+.auth-form__actions {
+  padding-top:
+    var(--app-space-1);
+
+  display: grid;
+
+  gap: var(--app-space-3);
+}
+
+.auth-form__submit {
+  min-height: 3rem;
+
+  padding:
+    0.75rem
+    1rem;
+
+  border: 0;
+
+  border-radius:
+    var(--app-radius-sm);
+
+  background:
+    var(--app-accent);
+
+  color: #ffffff;
+
+  font: inherit;
+  font-weight: 700;
+
+  cursor: pointer;
+}
+
+.auth-form__submit:hover {
+  background:
+    var(--app-accent-hover);
+}
+
+.auth-form__submit:focus-visible {
+  outline:
+    3px solid
+    color-mix(
+      in srgb,
+      var(--app-accent) 35%,
+      transparent
+    );
+
+  outline-offset: 3px;
+}
+
+.auth-form__alternate {
+  margin: 0;
+
+  color:
+    var(--app-muted);
+
+  font-size: 0.925rem;
+}
+
+.auth-form__alternate a {
+  color:
+    var(--app-accent);
+
+  font-weight: 650;
+}
+
+
+/* ============================================================
+   Authentication Messages
+   ============================================================ */
+
+.auth-message {
+  min-height: 1.5rem;
+
+  margin: 0;
+
+  padding:
+    var(--app-space-3);
+
+  border:
+    1px solid
+    transparent;
+
+  border-radius:
+    var(--app-radius-sm);
+}
+
+.auth-message:empty {
+  display: none;
+}
+
+.auth-message[data-state="error"] {
+  background:
+    var(--app-danger-bg);
+
+  color:
+    var(--app-danger);
+
+  border-color:
+    color-mix(
+      in srgb,
+      var(--app-danger) 25%,
+      transparent
+    );
+}
+
+.auth-message[data-state="ready"] {
+  background:
+    var(--app-success-bg);
+
+  color:
+    var(--app-success);
+
+  border-color:
+    color-mix(
+      in srgb,
+      var(--app-success) 25%,
+      transparent
+    );
+}
+
+
+/* ============================================================
+   Footer
+   ============================================================ */
 
 .app-footer {
   padding:
     var(--app-space-3)
     clamp(1rem, 4vw, 3rem);
 
-  color: var(--app-muted);
-  border-top: 1px solid var(--app-border);
-  font-size: 0.8rem;
+  color:
+    var(--app-muted);
+
+  border-top:
+    1px solid
+    var(--app-border);
+
+  font-size:
+    0.8rem;
 }
 
 .app-footer p {
   margin: 0;
 }
 
+
+/* ============================================================
+   Responsive Layer
+   ============================================================ */
+
 @media (max-width: 48rem) {
+
   .app-layout {
     display: block;
   }
@@ -211,13 +532,19 @@ a {
     overflow-x: auto;
 
     border-right: 0;
-    border-bottom: 1px solid var(--app-border);
+
+    border-bottom:
+      1px solid
+      var(--app-border);
   }
 
   .app-nav {
     width: max-content;
+
     display: flex;
-    gap: var(--app-space-1);
+
+    gap:
+      var(--app-space-1);
   }
 
   .app-nav__link {
@@ -229,4 +556,24 @@ a {
       var(--app-space-6)
       var(--app-space-4);
   }
+
+  .auth-form {
+    max-width: none;
+  }
+
+}
+
+
+/* ============================================================
+   Reduced Motion
+   ============================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+  }
+
 }
