@@ -7,6 +7,20 @@ const APP_MODE = "auth";
 const DEFAULT_ROUTE = "home";
 const DEFAULT_AUTH_VIEW = "signup";
 
+const API_BASE_URL =
+  "http://127.0.0.1:8787";
+
+
+// ============================================================
+// Runtime Authentication State
+// ============================================================
+
+const authSession = {
+  token: null,
+  expiresAt: null,
+  user: null
+};
+
 
 // ============================================================
 // Application Routes
@@ -48,7 +62,8 @@ const routes = {
   lab: {
     title: "Language Lab",
     eyebrow: "Jawa Timur Language Lab",
-    heading: "A place for language to become participation.",
+    heading:
+      "A place for language to become participation.",
     description:
       "Explore, contribute, and ask as the Language Lab grows into a living human language infrastructure."
   }
@@ -63,7 +78,8 @@ const authViews = {
   signup: {
     title: "Join",
     eyebrow: "Join the Language Lab",
-    heading: "Create your bahasabahasa identity.",
+    heading:
+      "Create your bahasabahasa identity.",
     description:
       "Start with an account. Your language relationships and participation will come next.",
     submitLabel: "Create Account",
@@ -75,7 +91,8 @@ const authViews = {
   login: {
     title: "Sign In",
     eyebrow: "Welcome Back",
-    heading: "Continue your participation.",
+    heading:
+      "Continue your participation.",
     description:
       "Sign in to return to your language identity and the Language Lab.",
     submitLabel: "Sign In",
@@ -258,8 +275,14 @@ function createSignupFormMarkup(authView) {
           name="password"
           type="password"
           autocomplete="new-password"
+          minlength="12"
+          maxlength="128"
           required
         >
+
+        <p class="auth-form__hint">
+          Use 12 to 128 characters.
+        </p>
       </div>
 
       <div class="auth-form__field">
@@ -276,6 +299,8 @@ function createSignupFormMarkup(authView) {
           name="confirmPassword"
           type="password"
           autocomplete="new-password"
+          minlength="12"
+          maxlength="128"
           required
         >
       </div>
@@ -437,8 +462,6 @@ function renderAuthView(authViewName) {
   document.title =
     `${authView.title} | bahasabahasa`;
 
-  // Authentication views do not select
-  // application navigation items.
   updateNavigation(null);
 
   document.documentElement.dataset.route =
@@ -507,6 +530,25 @@ function markFieldInvalid(field) {
   );
 
   field.focus();
+}
+
+
+function setFormBusy(form, busy) {
+  const submitButton =
+    form.querySelector(
+      ".auth-form__submit"
+    );
+
+  if (!submitButton) {
+    return;
+  }
+
+  submitButton.disabled = busy;
+
+  form.setAttribute(
+    "aria-busy",
+    String(busy)
+  );
 }
 
 
@@ -608,6 +650,24 @@ function validateSignupForm(form) {
     };
   }
 
+  if (password.value.length < 12) {
+    return {
+      valid: false,
+      field: password,
+      message:
+        "Password must contain at least 12 characters."
+    };
+  }
+
+  if (password.value.length > 128) {
+    return {
+      valid: false,
+      field: password,
+      message:
+        "Password must not exceed 128 characters."
+    };
+  }
+
   if (!confirmPassword.value) {
     return {
       valid: false,
@@ -648,20 +708,139 @@ function validateAuthForm(form) {
 
 
 // ============================================================
+// API Layer
+// ============================================================
+
+async function apiRequest(
+  path,
+  options = {}
+) {
+  const headers =
+    new Headers(options.headers || {});
+
+  headers.set(
+    "Accept",
+    "application/json"
+  );
+
+  if (
+    options.body &&
+    !headers.has("Content-Type")
+  ) {
+    headers.set(
+      "Content-Type",
+      "application/json"
+    );
+  }
+
+  if (authSession.token) {
+    headers.set(
+      "Authorization",
+      `Bearer ${authSession.token}`
+    );
+  }
+
+  let response;
+
+  try {
+    response = await fetch(
+      `${API_BASE_URL}${path}`,
+      {
+        ...options,
+        headers
+      }
+    );
+  } catch {
+    throw new Error(
+      "Unable to reach the bahasabahasa API."
+    );
+  }
+
+  let data = null;
+
+  try {
+    data = await response.json();
+  } catch {
+    data = null;
+  }
+
+  if (!response.ok) {
+    const message =
+      data?.error?.message ||
+      `Request failed with status ${response.status}.`;
+
+    throw new Error(message);
+  }
+
+  return data;
+}
+
+
+// ============================================================
+// Authentication API
+// ============================================================
+
+async function signup(email, password) {
+  return apiRequest(
+    "/auth/signup",
+    {
+      method: "POST",
+      body: JSON.stringify({
+        email,
+        password
+      })
+    }
+  );
+}
+
+
+async function login(email, password) {
+  const data =
+    await apiRequest(
+      "/auth/login",
+      {
+        method: "POST",
+        body: JSON.stringify({
+          email,
+          password
+        })
+      }
+    );
+
+  authSession.token =
+    data.session.token;
+
+  authSession.expiresAt =
+    data.session.expiresAt;
+
+  authSession.user =
+    data.user;
+
+  return data;
+}
+
+
+async function getCurrentUser() {
+  return apiRequest(
+    "/auth/me",
+    {
+      method: "GET"
+    }
+  );
+}
+
+
+// ============================================================
 // Authentication Form Submission
 // ============================================================
 
-function handleAuthSubmit(event) {
+async function handleAuthSubmit(event) {
   event.preventDefault();
 
   const form =
     event.currentTarget;
 
   clearFieldErrors(form);
-
-  setAuthMessage(
-    "Checking form…"
-  );
 
   const result =
     validateAuthForm(form);
@@ -679,20 +858,63 @@ function handleAuthSubmit(event) {
     return;
   }
 
+  const formType =
+    form.dataset.authForm;
+
+  const email =
+    form.elements.email.value
+      .trim()
+      .toLowerCase();
+
+  const password =
+    form.elements.password.value;
+
+  setFormBusy(form, true);
+
   setAuthMessage(
-    "Form ready for authentication integration.",
-    "ready"
+    formType === "signup"
+      ? "Creating account..."
+      : "Signing in..."
   );
 
-  // T10.3.2 boundary:
-  //
-  // Do not authenticate here.
-  // Do not create a fake user.
-  // Do not store credentials.
-  // Do not call an API.
-  //
-  // T10.4 will connect this validated
-  // interaction contract to the backend.
+  try {
+    if (formType === "signup") {
+      await signup(
+        email,
+        password
+      );
+
+      form.reset();
+
+      window.location.hash =
+        "login";
+
+      return;
+    }
+
+    await login(
+      email,
+      password
+    );
+
+    const currentUser =
+      await getCurrentUser();
+
+    authSession.user =
+      currentUser.user;
+
+    setAuthMessage(
+      `Authenticated as ${currentUser.user.email}.`,
+      "ready"
+    );
+  } catch (error) {
+    setAuthMessage(
+      error.message,
+      "error"
+    );
+  } finally {
+    setFormBusy(form, false);
+  }
 }
 
 

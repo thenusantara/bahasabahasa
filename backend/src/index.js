@@ -22,142 +22,279 @@ import {
   handlePutMyInterests
 } from "./routes/interests.js";
 
+
+// ============================================================
+// Development CORS
+// ============================================================
+
+const ALLOWED_ORIGINS = new Set([
+  "http://127.0.0.1:5500"
+]);
+
+
+function getCorsHeaders(request) {
+  const origin = request.headers.get("Origin");
+
+  if (!origin || !ALLOWED_ORIGINS.has(origin)) {
+    return {};
+  }
+
+  return {
+    "Access-Control-Allow-Origin": origin,
+    "Access-Control-Allow-Methods":
+      "GET, POST, PUT, DELETE, OPTIONS",
+    "Access-Control-Allow-Headers":
+      "Content-Type, Authorization",
+    "Vary": "Origin"
+  };
+}
+
+
+function applyCors(response, request) {
+  const headers = new Headers(response.headers);
+  const corsHeaders = getCorsHeaders(request);
+
+  Object.entries(corsHeaders).forEach(
+    ([name, value]) => {
+      headers.set(name, value);
+    }
+  );
+
+  return new Response(response.body, {
+    status: response.status,
+    statusText: response.statusText,
+    headers
+  });
+}
+
+
+function handleOptions(request) {
+  const origin = request.headers.get("Origin");
+
+  if (!origin || !ALLOWED_ORIGINS.has(origin)) {
+    return new Response(null, {
+      status: 403
+    });
+  }
+
+  return new Response(null, {
+    status: 204,
+    headers: getCorsHeaders(request)
+  });
+}
+
+
+// ============================================================
+// Request Router
+// ============================================================
+
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
 
-    // Health check
+    if (request.method === "OPTIONS") {
+      return handleOptions(request);
+    }
+
+    let response;
+
+
+    // ========================================================
+    // Health
+    // ========================================================
+
     if (
       url.pathname === "/health" &&
       request.method === "GET"
     ) {
-      return Response.json({
+      response = Response.json({
         service: "bahasabahasa-api",
         status: "ok",
         environment: "development"
       });
+
+      return applyCors(response, request);
     }
 
-    // Create account
+
+    // ========================================================
+    // Authentication
+    // ========================================================
+
     if (
       url.pathname === "/auth/signup" &&
       request.method === "POST"
     ) {
-      return handleSignup(request, env);
+      response = await handleSignup(
+        request,
+        env
+      );
+
+      return applyCors(response, request);
     }
 
-    // Login
     if (
       url.pathname === "/auth/login" &&
       request.method === "POST"
     ) {
-      return handleLogin(request, env);
+      response = await handleLogin(
+        request,
+        env
+      );
+
+      return applyCors(response, request);
     }
 
-    // Logout
     if (
       url.pathname === "/auth/logout" &&
       request.method === "POST"
     ) {
-      return handleLogout(request, env);
+      response = await handleLogout(
+        request,
+        env
+      );
+
+      return applyCors(response, request);
     }
 
-    // Current authenticated user
     if (
       url.pathname === "/auth/me" &&
       request.method === "GET"
     ) {
-      return handleMe(request, env);
+      response = await handleMe(
+        request,
+        env
+      );
+
+      return applyCors(response, request);
+    }
+
+
+    // ========================================================
+    // Profile
+    // ========================================================
+
+    if (
+      url.pathname === "/me/profile" &&
+      request.method === "GET"
+    ) {
+      response = await handleGetProfile(
+        request,
+        env
+      );
+
+      return applyCors(response, request);
     }
 
     if (
-    url.pathname === "/me/profile" &&
-    request.method === "GET"
-  ) {
-  return handleGetProfile(
-      request,
-      env
-    );
-  }
+      url.pathname === "/me/profile" &&
+      request.method === "PUT"
+    ) {
+      response = await handlePutProfile(
+        request,
+        env
+      );
 
-  if (
-  url.pathname === "/me/profile" &&
-  request.method === "PUT"
-  ) {
-  return handlePutProfile(
-      request,
-      env
-    );
-  }
+      return applyCors(response, request);
+    }
 
-  if (
-  url.pathname === "/languages" &&
-  request.method === "GET"
-  ) {
-  return handleGetLanguages(
-      request,
-      env
-    );
-  }
 
-  if (
-  url.pathname === "/me/languages" &&
-    request.method === "GET"
-  ) {
-  return handleGetMyLanguages(
-      request,
-      env
-    );
-  }
+    // ========================================================
+    // Languages
+    // ========================================================
 
-  if (
-  url.pathname === "/me/languages" &&
-  request.method === "POST"
-  ) {
-  return handleAddMyLanguage(
-      request,
-      env
-    );
-  }
+    if (
+      url.pathname === "/languages" &&
+      request.method === "GET"
+    ) {
+      response = await handleGetLanguages(
+        request,
+        env
+      );
 
-  const userLanguageMatch =
-  url.pathname.match(
-    /^\/me\/languages\/([^/]+)$/
-  );
+      return applyCors(response, request);
+    }
 
-  if (
-  userLanguageMatch &&
-    request.method === "DELETE"
-  ) {
-  return handleDeleteMyLanguage(
-      request,
-      env,
-    userLanguageMatch[1]
-    );
-  }
+    if (
+      url.pathname === "/me/languages" &&
+      request.method === "GET"
+    ) {
+      response = await handleGetMyLanguages(
+        request,
+        env
+      );
 
-  if (
-  url.pathname === "/me/interests" &&
-  request.method === "GET"
-  ) {
-  return handleGetMyInterests(
-      request,
-      env
-    );
-  }
+      return applyCors(response, request);
+    }
 
-  if (
-  url.pathname === "/me/interests" &&
-    request.method === "PUT"
-  ) {
-  return handlePutMyInterests(
-      request,
-      env
-    );
-  }
+    if (
+      url.pathname === "/me/languages" &&
+      request.method === "POST"
+    ) {
+      response = await handleAddMyLanguage(
+        request,
+        env
+      );
 
+      return applyCors(response, request);
+    }
+
+    const userLanguageMatch =
+      url.pathname.match(
+        /^\/me\/languages\/([^/]+)$/
+      );
+
+    if (
+      userLanguageMatch &&
+      request.method === "DELETE"
+    ) {
+      response =
+        await handleDeleteMyLanguage(
+          request,
+          env,
+          userLanguageMatch[1]
+        );
+
+      return applyCors(response, request);
+    }
+
+
+    // ========================================================
+    // Participation Interests
+    // ========================================================
+
+    if (
+      url.pathname === "/me/interests" &&
+      request.method === "GET"
+    ) {
+      response =
+        await handleGetMyInterests(
+          request,
+          env
+        );
+
+      return applyCors(response, request);
+    }
+
+    if (
+      url.pathname === "/me/interests" &&
+      request.method === "PUT"
+    ) {
+      response =
+        await handlePutMyInterests(
+          request,
+          env
+        );
+
+      return applyCors(response, request);
+    }
+
+
+    // ========================================================
     // Fallback
-    return Response.json(
+    // ========================================================
+
+    response = Response.json(
       {
         error: "Not Found"
       },
@@ -165,5 +302,7 @@ export default {
         status: 404
       }
     );
+
+    return applyCors(response, request);
   }
 };
