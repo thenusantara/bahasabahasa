@@ -711,6 +711,396 @@ a {
 
 
 /* ============================================================
+   Language Relationships
+   ============================================================ */
+
+.language-panel {
+  width: 100%;
+  max-width: 40rem;
+
+  margin-top:
+    var(--app-space-5);
+
+  padding:
+    var(--app-space-4);
+
+  background:
+    var(--app-surface);
+
+  border:
+    1px solid
+    var(--app-border);
+
+  border-radius:
+    var(--app-radius-md);
+}
+
+.language-panel__header {
+  margin-bottom:
+    var(--app-space-4);
+}
+
+.language-panel__header h2 {
+  margin:
+    0
+    0
+    var(--app-space-1);
+
+  font-size:
+    clamp(
+      1.125rem,
+      3vw,
+      1.4rem
+    );
+}
+
+.language-panel__header p {
+  margin: 0;
+
+  color:
+    var(--app-muted);
+}
+
+.language-form {
+  display: grid;
+
+  gap:
+    var(--app-space-4);
+}
+
+.language-form__field {
+  display: grid;
+
+  gap:
+    var(--app-space-1);
+}
+
+.language-form__label {
+  font-weight: 650;
+}
+
+.language-form__input {
+  width: 100%;
+
+  min-height: 3rem;
+
+  padding:
+    0.75rem
+    0.875rem;
+
+  background:
+    var(--app-surface);
+
+  color:
+    var(--app-text);
+
+  border:
+    1px solid
+    var(--app-border-strong);
+
+  border-radius:
+    var(--app-radius-sm);
+
+  font: inherit;
+}
+
+.language-form__input:hover {
+  border-color:
+    var(--app-muted);
+}
+
+.language-form__input:focus {
+  outline:
+    3px solid
+    color-mix(
+      in srgb,
+      var(--app-accent) 25%,
+      transparent
+    );
+
+  outline-offset: 2px;
+
+  border-color:
+    var(--app-accent);
+}
+
+.language-form__input[aria-invalid="true"] {
+  border-color:
+    var(--app-danger);
+}
+
+.language-form__input:disabled {
+  opacity: 0.7;
+}
+
+.language-form__hint {
+  margin: 0;
+
+  color:
+    var(--app-muted);
+
+  font-size:
+    0.875rem;
+}
+
+.language-form__actions {
+  padding-top:
+    var(--app-space-1);
+}
+
+.language-form__submit {
+  min-height: 3rem;
+
+  padding:
+    0.75rem
+    1rem;
+
+  border: 0;
+
+  border-radius:
+    var(--app-radius-sm);
+
+  background:
+    var(--app-accent);
+
+  color: #ffffff;
+
+  font: inherit;
+  font-weight: 700;
+
+  cursor: pointer;
+}
+
+.language-form__submit:hover {
+  background:
+    var(--app-accent-hover);
+}
+
+.language-form__submit:focus-visible {
+  outline:
+    3px solid
+    color-mix(
+      in srgb,
+      var(--app-accent) 35%,
+      transparent
+    );
+
+  outline-offset: 3px;
+}
+
+.language-form__submit:disabled {
+  cursor: wait;
+
+  opacity: 0.7;
+}
+
+
+/* ============================================================
+   Language Messages
+   ============================================================ */
+
+.language-message {
+  min-height: 1.5rem;
+
+  margin: 0;
+
+  padding:
+    var(--app-space-3);
+
+  border:
+    1px solid
+    transparent;
+
+  border-radius:
+    var(--app-radius-sm);
+}
+
+.language-message:empty {
+  display: none;
+}
+
+.language-message[data-state="error"] {
+  background:
+    var(--app-danger-bg);
+
+  color:
+    var(--app-danger);
+
+  border-color:
+    color-mix(
+      in srgb,
+      var(--app-danger) 25%,
+      transparent
+    );
+}
+
+.language-message[data-state="ready"] {
+  background:
+    var(--app-success-bg);
+
+  color:
+    var(--app-success);
+
+  border-color:
+    color-mix(
+      in srgb,
+      var(--app-success) 25%,
+      transparent
+    );
+}
+
+
+/* ============================================================
+   Language Relationship List
+   ============================================================ */
+
+.language-list {
+  display: grid;
+
+  gap:
+    var(--app-space-3);
+}
+
+.language-empty {
+  margin: 0;
+
+  padding:
+    var(--app-space-4);
+
+  color:
+    var(--app-muted);
+
+  border:
+    1px dashed
+    var(--app-border-strong);
+
+  border-radius:
+    var(--app-radius-sm);
+}
+
+.language-card {
+  min-width: 0;
+
+  padding:
+    var(--app-space-3);
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap:
+    var(--app-space-3);
+
+  border:
+    1px solid
+    var(--app-border);
+
+  border-radius:
+    var(--app-radius-sm);
+}
+
+.language-card__content {
+  min-width: 0;
+}
+
+.language-card__title {
+  margin: 0;
+
+  overflow-wrap: anywhere;
+
+  font-size: 1rem;
+}
+
+.language-card__relationship {
+  margin:
+    0.125rem
+    0
+    0;
+
+  color:
+    var(--app-accent);
+
+  font-size:
+    0.875rem;
+
+  font-weight: 700;
+}
+
+.language-card__region {
+  margin:
+    var(--app-space-1)
+    0
+    0;
+
+  color:
+    var(--app-muted);
+
+  overflow-wrap: anywhere;
+
+  font-size:
+    0.875rem;
+}
+
+.language-card__remove {
+  flex:
+    0
+    0
+    auto;
+
+  min-height: 2.5rem;
+
+  padding:
+    0.5rem
+    0.75rem;
+
+  background:
+    transparent;
+
+  color:
+    var(--app-danger);
+
+  border:
+    1px solid
+    color-mix(
+      in srgb,
+      var(--app-danger) 35%,
+      var(--app-border)
+    );
+
+  border-radius:
+    var(--app-radius-sm);
+
+  font: inherit;
+  font-weight: 650;
+
+  cursor: pointer;
+}
+
+.language-card__remove:hover {
+  background:
+    var(--app-danger-bg);
+}
+
+.language-card__remove:focus-visible {
+  outline:
+    3px solid
+    color-mix(
+      in srgb,
+      var(--app-danger) 25%,
+      transparent
+    );
+
+  outline-offset: 2px;
+}
+
+.language-card__remove:disabled {
+  cursor: wait;
+
+  opacity: 0.7;
+}
+
+
+/* ============================================================
    Footer
    ============================================================ */
 
@@ -779,8 +1169,19 @@ a {
   }
 
   .auth-form,
-  .profile-form {
+  .profile-form,
+  .language-panel {
     max-width: none;
+  }
+
+  .language-card {
+    align-items: stretch;
+
+    flex-direction: column;
+  }
+
+  .language-card__remove {
+    width: 100%;
   }
 
 }

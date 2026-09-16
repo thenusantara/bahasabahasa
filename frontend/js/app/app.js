@@ -6,9 +6,7 @@ let appMode = "auth";
 
 const DEFAULT_ROUTE = "home";
 const DEFAULT_AUTH_VIEW = "signup";
-
-const API_BASE_URL =
-  "http://127.0.0.1:8787";
+const API_BASE_URL = "http://127.0.0.1:8787";
 
 
 // ============================================================
@@ -101,6 +99,19 @@ const authViews = {
       "New to bahasabahasa? Join the Language Lab"
   }
 };
+
+
+// ============================================================
+// Language Relationship Vocabulary
+// ============================================================
+
+const LANGUAGE_RELATIONSHIP_OPTIONS = [
+  ["speak", "Speak"],
+  ["learn", "Learn"],
+  ["teach", "Teach"],
+  ["research", "Research"],
+  ["review", "Review"]
+];
 
 
 // ============================================================
@@ -241,7 +252,6 @@ function createSignupFormMarkup(authView) {
       data-auth-form="signup"
       novalidate
     >
-
       <div class="auth-form__field">
         <label
           class="auth-form__label"
@@ -326,7 +336,6 @@ function createSignupFormMarkup(authView) {
           </a>
         </p>
       </div>
-
     </form>
   `;
 }
@@ -340,7 +349,6 @@ function createLoginFormMarkup(authView) {
       data-auth-form="login"
       novalidate
     >
-
       <div class="auth-form__field">
         <label
           class="auth-form__label"
@@ -399,7 +407,6 @@ function createLoginFormMarkup(authView) {
           </a>
         </p>
       </div>
-
     </form>
   `;
 }
@@ -863,6 +870,62 @@ async function saveProfile(profile) {
 
 
 // ============================================================
+// Language API
+// ============================================================
+
+async function getLanguageCatalogue() {
+  return apiRequest(
+    "/languages",
+    {
+      method: "GET"
+    }
+  );
+}
+
+
+async function getMyLanguages() {
+  return apiRequest(
+    "/me/languages",
+    {
+      method: "GET"
+    }
+  );
+}
+
+
+async function addMyLanguage(entry) {
+  return apiRequest(
+    "/me/languages",
+    {
+      method: "POST",
+      body: JSON.stringify({
+        languageId:
+          entry.languageId,
+        relationship:
+          entry.relationship,
+        regionNote:
+          entry.regionNote
+      })
+    }
+  );
+}
+
+
+async function deleteMyLanguage(
+  userLanguageId
+) {
+  return apiRequest(
+    `/me/languages/${encodeURIComponent(
+      userLanguageId
+    )}`,
+    {
+      method: "DELETE"
+    }
+  );
+}
+
+
+// ============================================================
 // Authentication Form Submission
 // ============================================================
 
@@ -997,16 +1060,7 @@ function initializeAuthForm() {
 // Profile Markup
 // ============================================================
 
-function createProfileFormMarkup(profile) {
-  const displayName =
-    profile?.displayName ?? "";
-
-  const regionCode =
-    profile?.regionCode ?? "";
-
-  const bio =
-    profile?.bio ?? "";
-
+function createProfileFormMarkup() {
   return `
     <form
       class="profile-form"
@@ -1147,7 +1201,10 @@ function clearProfileFieldErrors(form) {
 }
 
 
-function setProfileFormBusy(form, busy) {
+function setProfileFormBusy(
+  form,
+  busy
+) {
   const submitButton =
     form.querySelector(
       ".profile-form__submit"
@@ -1345,9 +1402,7 @@ async function renderProfileView() {
         ${route.description}
       </p>
 
-      ${createProfileFormMarkup(
-        data.profile
-      )}
+      ${createProfileFormMarkup()}
     `;
 
     populateProfileForm(
@@ -1384,11 +1439,21 @@ async function renderProfileView() {
           Profile unavailable
         </span>
 
-        <strong>
-          ${error.message}
-        </strong>
+        <strong
+          id="profile-load-error"
+        ></strong>
       </div>
     `;
+
+    const errorElement =
+      document.querySelector(
+        "#profile-load-error"
+      );
+
+    if (errorElement) {
+      errorElement.textContent =
+        error.message;
+    }
   }
 }
 
@@ -1498,6 +1563,837 @@ function initializeProfileForm() {
 
 
 // ============================================================
+// Language Relationships Markup
+// ============================================================
+
+function createLanguagesViewMarkup() {
+  const route =
+    routes.languages;
+
+  return `
+    <p class="app-eyebrow">
+      ${route.eyebrow}
+    </p>
+
+    <h1>
+      ${route.heading}
+    </h1>
+
+    <p class="app-lead">
+      ${route.description}
+    </p>
+
+    <section
+      class="language-panel"
+      aria-labelledby="language-add-heading"
+    >
+      <div class="language-panel__header">
+        <h2 id="language-add-heading">
+          Add a language relationship
+        </h2>
+
+        <p>
+          Choose a language and describe how you relate to it.
+        </p>
+      </div>
+
+      <form
+        class="language-form"
+        id="language-form"
+        novalidate
+      >
+        <div class="language-form__field">
+          <label
+            class="language-form__label"
+            for="language-id"
+          >
+            Language
+          </label>
+
+          <select
+            class="language-form__input"
+            id="language-id"
+            name="languageId"
+            required
+          >
+            <option value="">
+              Loading languages...
+            </option>
+          </select>
+        </div>
+
+        <div class="language-form__field">
+          <label
+            class="language-form__label"
+            for="language-relationship"
+          >
+            Relationship
+          </label>
+
+          <select
+            class="language-form__input"
+            id="language-relationship"
+            name="relationship"
+            required
+          >
+            <option value="">
+              Choose a relationship
+            </option>
+
+            ${LANGUAGE_RELATIONSHIP_OPTIONS
+              .map(
+                ([value, label]) =>
+                  `<option value="${value}">${label}</option>`
+              )
+              .join("")}
+          </select>
+        </div>
+
+        <div class="language-form__field">
+          <label
+            class="language-form__label"
+            for="language-region-note"
+          >
+            Region note
+          </label>
+
+          <input
+            class="language-form__input"
+            id="language-region-note"
+            name="regionNote"
+            type="text"
+            maxlength="120"
+          >
+
+          <p class="language-form__hint">
+            Optional. Add a regional or community context in up to 120 characters.
+          </p>
+        </div>
+
+        <p
+          class="language-message"
+          id="language-message"
+          role="status"
+          aria-live="polite"
+        ></p>
+
+        <div class="language-form__actions">
+          <button
+            class="language-form__submit"
+            type="submit"
+          >
+            Add Relationship
+          </button>
+        </div>
+      </form>
+    </section>
+
+    <section
+      class="language-panel"
+      aria-labelledby="my-languages-heading"
+    >
+      <div class="language-panel__header">
+        <h2 id="my-languages-heading">
+          My relationships
+        </h2>
+
+        <p>
+          Each relationship is stored independently, so one language can have more than one role in your language identity.
+        </p>
+      </div>
+
+      <div
+        class="language-list"
+        id="language-list"
+        aria-live="polite"
+      >
+        <p class="language-empty">
+          Loading your language relationships...
+        </p>
+      </div>
+    </section>
+  `;
+}
+
+
+// ============================================================
+// Language Relationship State
+// ============================================================
+
+function getLanguageMessageElement() {
+  return document.querySelector(
+    "#language-message"
+  );
+}
+
+
+function setLanguageMessage(
+  message,
+  state = ""
+) {
+  const messageElement =
+    getLanguageMessageElement();
+
+  if (!messageElement) {
+    return;
+  }
+
+  messageElement.textContent =
+    message;
+
+  if (state) {
+    messageElement.dataset.state =
+      state;
+  } else {
+    delete messageElement.dataset.state;
+  }
+}
+
+
+function clearLanguageFieldErrors(form) {
+  const fields =
+    form.querySelectorAll(
+      ".language-form__input"
+    );
+
+  fields.forEach((field) => {
+    field.removeAttribute(
+      "aria-invalid"
+    );
+  });
+}
+
+
+function setLanguageFormBusy(
+  form,
+  busy
+) {
+  const submitButton =
+    form.querySelector(
+      ".language-form__submit"
+    );
+
+  const fields =
+    form.querySelectorAll(
+      ".language-form__input"
+    );
+
+  if (submitButton) {
+    submitButton.disabled =
+      busy;
+  }
+
+  fields.forEach((field) => {
+    field.disabled =
+      busy;
+  });
+
+  form.setAttribute(
+    "aria-busy",
+    String(busy)
+  );
+}
+
+
+// ============================================================
+// Language Catalogue Rendering
+// ============================================================
+
+function populateLanguageCatalogue(
+  languages
+) {
+  const select =
+    document.querySelector(
+      "#language-id"
+    );
+
+  if (!select) {
+    return;
+  }
+
+  select.replaceChildren();
+
+  const placeholder =
+    document.createElement(
+      "option"
+    );
+
+  placeholder.value = "";
+
+  placeholder.textContent =
+    languages.length
+      ? "Choose a language"
+      : "No active languages available";
+
+  select.append(
+    placeholder
+  );
+
+  languages.forEach((language) => {
+    const option =
+      document.createElement(
+        "option"
+      );
+
+    option.value =
+      language.id;
+
+    option.textContent =
+      language.code
+        ? `${language.name} (${language.code})`
+        : language.name;
+
+    select.append(
+      option
+    );
+  });
+
+  select.disabled =
+    languages.length === 0;
+}
+
+
+// ============================================================
+// Language Relationship Rendering
+// ============================================================
+
+function getRelationshipLabel(value) {
+  return (
+    LANGUAGE_RELATIONSHIP_OPTIONS.find(
+      ([relationship]) =>
+        relationship === value
+    )?.[1] || value
+  );
+}
+
+
+function renderLanguageRelationships(
+  entries
+) {
+  const list =
+    document.querySelector(
+      "#language-list"
+    );
+
+  if (!list) {
+    return;
+  }
+
+  list.replaceChildren();
+
+  if (!entries.length) {
+    const empty =
+      document.createElement("p");
+
+    empty.className =
+      "language-empty";
+
+    empty.textContent =
+      "No language relationships yet.";
+
+    list.append(
+      empty
+    );
+
+    return;
+  }
+
+  entries.forEach((entry) => {
+    const card =
+      document.createElement(
+        "article"
+      );
+
+    card.className =
+      "language-card";
+
+    const content =
+      document.createElement(
+        "div"
+      );
+
+    content.className =
+      "language-card__content";
+
+    const heading =
+      document.createElement(
+        "h3"
+      );
+
+    heading.className =
+      "language-card__title";
+
+    heading.textContent =
+      entry.language.name;
+
+    const relationship =
+      document.createElement(
+        "p"
+      );
+
+    relationship.className =
+      "language-card__relationship";
+
+    relationship.textContent =
+      getRelationshipLabel(
+        entry.relationship
+      );
+
+    content.append(
+      heading,
+      relationship
+    );
+
+    if (entry.regionNote) {
+      const region =
+        document.createElement(
+          "p"
+        );
+
+      region.className =
+        "language-card__region";
+
+      region.textContent =
+        entry.regionNote;
+
+      content.append(
+        region
+      );
+    }
+
+    const removeButton =
+      document.createElement(
+        "button"
+      );
+
+    removeButton.className =
+      "language-card__remove";
+
+    removeButton.type =
+      "button";
+
+    removeButton.dataset.userLanguageId =
+      entry.id;
+
+    removeButton.textContent =
+      "Remove";
+
+    removeButton.setAttribute(
+      "aria-label",
+      `Remove ${entry.language.name} - ${getRelationshipLabel(
+        entry.relationship
+      )}`
+    );
+
+    card.append(
+      content,
+      removeButton
+    );
+
+    list.append(
+      card
+    );
+  });
+}
+
+
+// ============================================================
+// Language Relationship Validation
+// ============================================================
+
+function validateLanguageForm(form) {
+  const languageId =
+    form.elements.languageId;
+
+  const relationship =
+    form.elements.relationship;
+
+  const regionNote =
+    form.elements.regionNote;
+
+  const languageIdValue =
+    languageId.value.trim();
+
+  const relationshipValue =
+    relationship.value
+      .trim()
+      .toLowerCase();
+
+  const regionNoteValue =
+    regionNote.value.trim();
+
+  if (!languageIdValue) {
+    return {
+      valid: false,
+      field: languageId,
+      message:
+        "Choose a language."
+    };
+  }
+
+  if (
+    !LANGUAGE_RELATIONSHIP_OPTIONS.some(
+      ([value]) =>
+        value === relationshipValue
+    )
+  ) {
+    return {
+      valid: false,
+      field: relationship,
+      message:
+        "Choose a relationship."
+    };
+  }
+
+  if (
+    regionNoteValue.length > 120
+  ) {
+    return {
+      valid: false,
+      field: regionNote,
+      message:
+        "Region note must not exceed 120 characters."
+    };
+  }
+
+  return {
+    valid: true,
+    value: {
+      languageId:
+        languageIdValue,
+      relationship:
+        relationshipValue,
+      regionNote:
+        regionNoteValue || null
+    }
+  };
+}
+
+
+// ============================================================
+// Language Relationship Refresh
+// ============================================================
+
+async function refreshMyLanguages() {
+  const data =
+    await getMyLanguages();
+
+  renderLanguageRelationships(
+    data.languages
+  );
+
+  return data.languages;
+}
+
+
+// ============================================================
+// Language Relationship Submission
+// ============================================================
+
+async function handleLanguageSubmit(
+  event
+) {
+  event.preventDefault();
+
+  const form =
+    event.currentTarget;
+
+  clearLanguageFieldErrors(
+    form
+  );
+
+  const result =
+    validateLanguageForm(
+      form
+    );
+
+  if (!result.valid) {
+    markFieldInvalid(
+      result.field
+    );
+
+    setLanguageMessage(
+      result.message,
+      "error"
+    );
+
+    return;
+  }
+
+  setLanguageFormBusy(
+    form,
+    true
+  );
+
+  setLanguageMessage(
+    "Adding relationship..."
+  );
+
+  try {
+    await addMyLanguage(
+      result.value
+    );
+
+    form.elements.relationship.value =
+      "";
+
+    form.elements.regionNote.value =
+      "";
+
+    await refreshMyLanguages();
+
+    setLanguageMessage(
+      "Language relationship added.",
+      "ready"
+    );
+  } catch (error) {
+    setLanguageMessage(
+      error.message,
+      "error"
+    );
+  } finally {
+    setLanguageFormBusy(
+      form,
+      false
+    );
+  }
+}
+
+
+// ============================================================
+// Language Relationship Removal
+// ============================================================
+
+async function handleLanguageListClick(
+  event
+) {
+  const button =
+    event.target.closest(
+      ".language-card__remove"
+    );
+
+  if (!button) {
+    return;
+  }
+
+  const userLanguageId =
+    button.dataset.userLanguageId;
+
+  if (!userLanguageId) {
+    return;
+  }
+
+  button.disabled =
+    true;
+
+  setLanguageMessage(
+    "Removing relationship..."
+  );
+
+  try {
+    await deleteMyLanguage(
+      userLanguageId
+    );
+
+    await refreshMyLanguages();
+
+    setLanguageMessage(
+      "Language relationship removed.",
+      "ready"
+    );
+  } catch (error) {
+    button.disabled =
+      false;
+
+    setLanguageMessage(
+      error.message,
+      "error"
+    );
+  }
+}
+
+
+// ============================================================
+// Language Relationship Initialization
+// ============================================================
+
+function initializeLanguageView() {
+  const form =
+    document.querySelector(
+      "#language-form"
+    );
+
+  const list =
+    document.querySelector(
+      "#language-list"
+    );
+
+  if (form) {
+    form.addEventListener(
+      "submit",
+      handleLanguageSubmit
+    );
+
+    const fields =
+      form.querySelectorAll(
+        ".language-form__input"
+      );
+
+    fields.forEach((field) => {
+      field.addEventListener(
+        "input",
+        () => {
+          field.removeAttribute(
+            "aria-invalid"
+          );
+
+          setLanguageMessage("");
+        }
+      );
+
+      field.addEventListener(
+        "change",
+        () => {
+          field.removeAttribute(
+            "aria-invalid"
+          );
+
+          setLanguageMessage("");
+        }
+      );
+    });
+  }
+
+  if (list) {
+    list.addEventListener(
+      "click",
+      handleLanguageListClick
+    );
+  }
+}
+
+
+// ============================================================
+// Language Relationship View
+// ============================================================
+
+async function renderLanguagesView() {
+  const route =
+    routes.languages;
+
+  const view =
+    document.querySelector(
+      "#app-view"
+    );
+
+  if (!view) {
+    console.error(
+      "[bahasabahasa] Cannot render: #app-view was not found."
+    );
+
+    return;
+  }
+
+  view.innerHTML = `
+    <p class="app-eyebrow">
+      ${route.eyebrow}
+    </p>
+
+    <h1>
+      ${route.heading}
+    </h1>
+
+    <p class="app-lead">
+      ${route.description}
+    </p>
+
+    <div
+      class="app-status"
+      role="status"
+    >
+      <span class="app-status__label">
+        Language status
+      </span>
+
+      <strong>
+        Loading languages...
+      </strong>
+    </div>
+  `;
+
+  document.title =
+    `${route.title} | bahasabahasa`;
+
+  updateNavigation(
+    "languages"
+  );
+
+  document.documentElement.dataset.route =
+    "languages";
+
+  try {
+    const [
+      catalogueData,
+      myLanguagesData
+    ] = await Promise.all([
+      getLanguageCatalogue(),
+      getMyLanguages()
+    ]);
+
+    view.innerHTML =
+      createLanguagesViewMarkup();
+
+    populateLanguageCatalogue(
+      catalogueData.languages
+    );
+
+    renderLanguageRelationships(
+      myLanguagesData.languages
+    );
+
+    initializeLanguageView();
+  } catch (error) {
+    view.innerHTML = `
+      <p class="app-eyebrow">
+        ${route.eyebrow}
+      </p>
+
+      <h1>
+        ${route.heading}
+      </h1>
+
+      <p class="app-lead">
+        ${route.description}
+      </p>
+
+      <div
+        class="app-status app-status--error"
+        role="alert"
+      >
+        <span class="app-status__label">
+          Languages unavailable
+        </span>
+
+        <strong
+          id="language-load-error"
+        ></strong>
+      </div>
+    `;
+
+    const errorElement =
+      document.querySelector(
+        "#language-load-error"
+      );
+
+    if (errorElement) {
+      errorElement.textContent =
+        error.message;
+    }
+  }
+}
+
+
+// ============================================================
 // Application Route Dispatch
 // ============================================================
 
@@ -1511,9 +2407,19 @@ function renderRoute() {
     return;
   }
 
-  renderView(routeName);
+  if (routeName === "languages") {
+    renderLanguagesView();
 
-  updateNavigation(routeName);
+    return;
+  }
+
+  renderView(
+    routeName
+  );
+
+  updateNavigation(
+    routeName
+  );
 
   document.documentElement.dataset.route =
     routeName;
