@@ -113,6 +113,17 @@ const LANGUAGE_RELATIONSHIP_OPTIONS = [
   ["review", "Review"]
 ];
 
+// ============================================================
+// Participation Interest Vocabulary
+// ============================================================
+
+const PARTICIPATION_INTEREST_OPTIONS = [
+  ["learn", "Learn"],
+  ["teach", "Teach"],
+  ["research", "Research"],
+  ["contribute", "Contribute"],
+  ["language_ai", "Language AI"]
+];
 
 // ============================================================
 // Hash Resolution
@@ -924,6 +935,33 @@ async function deleteMyLanguage(
   );
 }
 
+// ============================================================
+// Participation API
+// ============================================================
+
+async function getMyInterests() {
+  return apiRequest(
+    "/me/interests",
+    {
+      method: "GET"
+    }
+  );
+}
+
+
+async function saveMyInterests(
+  interests
+) {
+  return apiRequest(
+    "/me/interests",
+    {
+      method: "PUT",
+      body: JSON.stringify({
+        interests
+      })
+    }
+  );
+}
 
 // ============================================================
 // Authentication Form Submission
@@ -2392,6 +2430,604 @@ async function renderLanguagesView() {
   }
 }
 
+// ============================================================
+// Participation Markup
+// ============================================================
+
+function createParticipationViewMarkup() {
+  const route =
+    routes.participation;
+
+  return `
+    <p class="app-eyebrow">
+      ${route.eyebrow}
+    </p>
+
+    <h1>
+      ${route.heading}
+    </h1>
+
+    <p class="app-lead">
+      ${route.description}
+    </p>
+
+    <section
+      class="participation-panel"
+      aria-labelledby="participation-heading"
+    >
+      <div class="participation-panel__header">
+        <h2 id="participation-heading">
+          Participation interests
+        </h2>
+
+        <p>
+          Choose the areas where you would like to participate.
+          You can change this selection later.
+        </p>
+      </div>
+
+      <form
+        class="participation-form"
+        id="participation-form"
+        novalidate
+      >
+        <fieldset
+          class="participation-form__fieldset"
+        >
+          <legend
+            class="participation-form__legend"
+          >
+            What would you like to participate in?
+          </legend>
+
+          <div
+            class="participation-options"
+            id="participation-options"
+          >
+            ${PARTICIPATION_INTEREST_OPTIONS
+              .map(
+                ([value, label]) => `
+                  <label
+                    class="participation-option"
+                  >
+                    <input
+                      class="participation-option__input"
+                      type="checkbox"
+                      name="interests"
+                      value="${value}"
+                    >
+
+                    <span
+                      class="participation-option__content"
+                    >
+                      <strong
+                        class="participation-option__label"
+                      >
+                        ${label}
+                      </strong>
+
+                      <span
+                        class="participation-option__description"
+                      >
+                        ${getParticipationInterestDescription(
+                          value
+                        )}
+                      </span>
+                    </span>
+                  </label>
+                `
+              )
+              .join("")}
+          </div>
+        </fieldset>
+
+        <p
+          class="participation-message"
+          id="participation-message"
+          role="status"
+          aria-live="polite"
+        ></p>
+
+        <div
+          class="participation-form__actions"
+        >
+          <button
+            class="participation-form__submit"
+            type="submit"
+          >
+            Save Interests
+          </button>
+        </div>
+      </form>
+    </section>
+
+    <section
+      class="participation-panel"
+      aria-labelledby="current-interests-heading"
+    >
+      <div class="participation-panel__header">
+        <h2 id="current-interests-heading">
+          Current interests
+        </h2>
+
+        <p>
+          These interests are stored with your bahasabahasa identity.
+        </p>
+      </div>
+
+      <div
+        class="participation-current"
+        id="participation-current"
+        aria-live="polite"
+      >
+        <p class="participation-empty">
+          No participation interests selected.
+        </p>
+      </div>
+    </section>
+  `;
+}
+
+
+// ============================================================
+// Participation Presentation
+// ============================================================
+
+function getParticipationInterestLabel(
+  value
+) {
+  return (
+    PARTICIPATION_INTEREST_OPTIONS.find(
+      ([interest]) =>
+        interest === value
+    )?.[1] || value
+  );
+}
+
+
+function getParticipationInterestDescription(
+  value
+) {
+  const descriptions = {
+    learn:
+      "Learn languages and deepen your language knowledge.",
+
+    teach:
+      "Share language knowledge through teaching and learning activities.",
+
+    research:
+      "Participate in language research and evidence-building.",
+
+    contribute:
+      "Contribute knowledge, observations, or language data.",
+
+    language_ai:
+      "Explore responsible human participation in language and AI."
+  };
+
+  return descriptions[value] || "";
+}
+
+
+// ============================================================
+// Participation State
+// ============================================================
+
+function getParticipationMessageElement() {
+  return document.querySelector(
+    "#participation-message"
+  );
+}
+
+
+function setParticipationMessage(
+  message,
+  state = ""
+) {
+  const messageElement =
+    getParticipationMessageElement();
+
+  if (!messageElement) {
+    return;
+  }
+
+  messageElement.textContent =
+    message;
+
+  if (state) {
+    messageElement.dataset.state =
+      state;
+  } else {
+    delete messageElement.dataset.state;
+  }
+}
+
+
+function setParticipationFormBusy(
+  form,
+  busy
+) {
+  const submitButton =
+    form.querySelector(
+      ".participation-form__submit"
+    );
+
+  const inputs =
+    form.querySelectorAll(
+      ".participation-option__input"
+    );
+
+  if (submitButton) {
+    submitButton.disabled =
+      busy;
+  }
+
+  inputs.forEach((input) => {
+    input.disabled =
+      busy;
+  });
+
+  form.setAttribute(
+    "aria-busy",
+    String(busy)
+  );
+}
+
+
+// ============================================================
+// Participation Selection
+// ============================================================
+
+function getSelectedParticipationInterests(
+  form
+) {
+  return Array.from(
+    form.querySelectorAll(
+      'input[name="interests"]:checked'
+    )
+  ).map(
+    (input) =>
+      input.value
+        .trim()
+        .toLowerCase()
+  );
+}
+
+
+function populateParticipationForm(
+  entries
+) {
+  const form =
+    document.querySelector(
+      "#participation-form"
+    );
+
+  if (!form) {
+    return;
+  }
+
+  const selectedInterests =
+    new Set(
+      entries.map(
+        (entry) =>
+          entry.interest
+      )
+    );
+
+  const inputs =
+    form.querySelectorAll(
+      'input[name="interests"]'
+    );
+
+  inputs.forEach((input) => {
+    input.checked =
+      selectedInterests.has(
+        input.value
+      );
+  });
+}
+
+
+// ============================================================
+// Participation Rendering
+// ============================================================
+
+function renderCurrentParticipationInterests(
+  entries
+) {
+  const container =
+    document.querySelector(
+      "#participation-current"
+    );
+
+  if (!container) {
+    return;
+  }
+
+  container.replaceChildren();
+
+  if (!entries.length) {
+    const empty =
+      document.createElement("p");
+
+    empty.className =
+      "participation-empty";
+
+    empty.textContent =
+      "No participation interests selected.";
+
+    container.append(
+      empty
+    );
+
+    return;
+  }
+
+  const list =
+    document.createElement("ul");
+
+  list.className =
+    "participation-current__list";
+
+  entries.forEach((entry) => {
+    const item =
+      document.createElement("li");
+
+    item.className =
+      "participation-current__item";
+
+    const label =
+      document.createElement("strong");
+
+    label.className =
+      "participation-current__label";
+
+    label.textContent =
+      getParticipationInterestLabel(
+        entry.interest
+      );
+
+    item.append(
+      label
+    );
+
+    list.append(
+      item
+    );
+  });
+
+  container.append(
+    list
+  );
+}
+
+
+// ============================================================
+// Participation Submission
+// ============================================================
+
+async function handleParticipationSubmit(
+  event
+) {
+  event.preventDefault();
+
+  const form =
+    event.currentTarget;
+
+  const interests =
+    getSelectedParticipationInterests(
+      form
+    );
+
+  /*
+   * The backend accepts zero to five canonical interests.
+   * An empty array intentionally clears the persisted set.
+   */
+  if (
+    interests.length >
+    PARTICIPATION_INTEREST_OPTIONS.length
+  ) {
+    setParticipationMessage(
+      "Too many participation interests.",
+      "error"
+    );
+
+    return;
+  }
+
+  setParticipationFormBusy(
+    form,
+    true
+  );
+
+  setParticipationMessage(
+    interests.length
+      ? "Saving participation interests..."
+      : "Clearing participation interests..."
+  );
+
+  try {
+    const data =
+      await saveMyInterests(
+        interests
+      );
+
+    populateParticipationForm(
+      data.interests
+    );
+
+    renderCurrentParticipationInterests(
+      data.interests
+    );
+
+    setParticipationMessage(
+      interests.length
+        ? "Participation interests saved."
+        : "Participation interests cleared.",
+      "ready"
+    );
+  } catch (error) {
+    setParticipationMessage(
+      error.message,
+      "error"
+    );
+  } finally {
+    setParticipationFormBusy(
+      form,
+      false
+    );
+  }
+}
+
+
+// ============================================================
+// Participation Initialization
+// ============================================================
+
+function initializeParticipationView() {
+  const form =
+    document.querySelector(
+      "#participation-form"
+    );
+
+  if (!form) {
+    return;
+  }
+
+  form.addEventListener(
+    "submit",
+    handleParticipationSubmit
+  );
+
+  const inputs =
+    form.querySelectorAll(
+      ".participation-option__input"
+    );
+
+  inputs.forEach((input) => {
+    input.addEventListener(
+      "change",
+      () => {
+        setParticipationMessage("");
+      }
+    );
+  });
+}
+
+
+// ============================================================
+// Participation View
+// ============================================================
+
+async function renderParticipationView() {
+  const route =
+    routes.participation;
+
+  const view =
+    document.querySelector(
+      "#app-view"
+    );
+
+  if (!view) {
+    console.error(
+      "[bahasabahasa] Cannot render: #app-view was not found."
+    );
+
+    return;
+  }
+
+  view.innerHTML = `
+    <p class="app-eyebrow">
+      ${route.eyebrow}
+    </p>
+
+    <h1>
+      ${route.heading}
+    </h1>
+
+    <p class="app-lead">
+      ${route.description}
+    </p>
+
+    <div
+      class="app-status"
+      role="status"
+    >
+      <span class="app-status__label">
+        Participation status
+      </span>
+
+      <strong>
+        Loading participation interests...
+      </strong>
+    </div>
+  `;
+
+  document.title =
+    `${route.title} | bahasabahasa`;
+
+  updateNavigation(
+    "participation"
+  );
+
+  document.documentElement.dataset.route =
+    "participation";
+
+  try {
+    const data =
+      await getMyInterests();
+
+    view.innerHTML =
+      createParticipationViewMarkup();
+
+    populateParticipationForm(
+      data.interests
+    );
+
+    renderCurrentParticipationInterests(
+      data.interests
+    );
+
+    initializeParticipationView();
+  } catch (error) {
+    view.innerHTML = `
+      <p class="app-eyebrow">
+        ${route.eyebrow}
+      </p>
+
+      <h1>
+        ${route.heading}
+      </h1>
+
+      <p class="app-lead">
+        ${route.description}
+      </p>
+
+      <div
+        class="app-status app-status--error"
+        role="alert"
+      >
+        <span class="app-status__label">
+          Participation unavailable
+        </span>
+
+        <strong
+          id="participation-load-error"
+        ></strong>
+      </div>
+    `;
+
+    const errorElement =
+      document.querySelector(
+        "#participation-load-error"
+      );
+
+    if (errorElement) {
+      errorElement.textContent =
+        error.message;
+    }
+  }
+}
 
 // ============================================================
 // Application Route Dispatch
@@ -2409,6 +3045,12 @@ function renderRoute() {
 
   if (routeName === "languages") {
     renderLanguagesView();
+
+    return;
+  }
+
+  if (routeName === "participation") {
+    renderParticipationView();
 
     return;
   }
