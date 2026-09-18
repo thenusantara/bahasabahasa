@@ -24,11 +24,12 @@ import {
 
 
 // ============================================================
-// Development CORS
+// CORS
 // ============================================================
 
 const ALLOWED_ORIGINS = new Set([
-  "http://127.0.0.1:5500"
+  "http://127.0.0.1:5500",
+  "https://bahasabahasa.com"
 ]);
 
 
@@ -109,8 +110,7 @@ export default {
     ) {
       response = Response.json({
         service: "bahasabahasa-api",
-        status: "ok",
-        environment: "development"
+        status: "ok"
       });
 
       return applyCors(response, request);
