@@ -105,15 +105,19 @@ a {
 }
 
 .app-brand {
-  font-size: 1.125rem;
-  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+
+  flex-shrink: 0;
 
   text-decoration: none;
 }
 
-.app-brand:hover,
-.app-brand:focus-visible {
-  text-decoration: underline;
+.app-brand img {
+  width: 180px;
+  height: auto;
+
+  display: block;
 }
 
 .app-context {
