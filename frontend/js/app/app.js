@@ -6,7 +6,14 @@ let appMode = "auth";
 
 const DEFAULT_ROUTE = "home";
 const DEFAULT_AUTH_VIEW = "signup";
-const API_BASE_URL = "http://127.0.0.1:8787";
+const LOCAL_HOSTNAMES = new Set([
+  "127.0.0.1",
+  "localhost"
+]);
+
+const API_BASE_URL = LOCAL_HOSTNAMES.has(window.location.hostname)
+  ? "http://127.0.0.1:8787"
+  : "https://api.bahasabahasa.com";
 
 
 // ============================================================
